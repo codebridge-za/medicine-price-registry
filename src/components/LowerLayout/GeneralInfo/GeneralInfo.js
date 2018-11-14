@@ -1,14 +1,16 @@
 import React from 'react';
 
 import global from '../../../styles.module.css';
+import classes from './GeneralInfo.module.css';
 
 const GeneralInfo = (props) => {
   return (
     <div className={global.container}>
       {props.copy.details.map(copy => {
         return (
-          <div key={copy.heading}>
-            <h3>{ copy.heading }</h3>
+          <div className={classes.vessel} key={copy.heading}>
+            <h3 className={classes.heading}>{ copy.heading }</h3>
+            <div className={classes.content}>
             <p>{ copy.firstParagraph }</p>
             
             { copy.lists.map(list => {
@@ -27,6 +29,7 @@ const GeneralInfo = (props) => {
                 </p>
               );
             }) }
+            </div>
           </div>
         );
       })}

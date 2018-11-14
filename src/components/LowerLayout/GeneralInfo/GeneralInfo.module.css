@@ -1,0 +1,18 @@
+.vessel {
+  border: 1px solid #beeef7;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.heading {
+  background-color: #d9edf7;
+  margin: 0;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  color: #3a87ad;
+  font-weight: 400;
+}
+
+.content {
+  padding: 20px;
+}
