@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../components/header/header';
-import LowerLayout from '../../components/LowerLayout/LowerLayout';
+import Header from '../../components/header';
+import LowerLayout from '../../components/LowerLayout';
 
 const Layout = props => {
   return (

@@ -5,13 +5,13 @@
   padding-bottom: 30px;
 }
 
-.CollectionDateAndContact {
+.collectionDateAndContact {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.Sponsor {
+.sponsor {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

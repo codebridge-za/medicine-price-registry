@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Layout from '../hoc/Layout/Layout';
+import Layout from '../hoc/Layout';
 
 const IndexPage = () => (
   <Layout>
-    
+  
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

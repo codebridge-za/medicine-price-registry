@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import global from '../../styles.module.css';
-import classes from './header.module.css';
+import classes from './style.module.css';
 
 
 const Header = () => {
