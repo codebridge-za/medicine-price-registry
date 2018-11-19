@@ -9,15 +9,19 @@ const createList = listContainer => listContainer.map(({ list }) => (
   </ul>
 ));
 
-const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link }) => (
+const createLink = additionalInfo => additionalInfo.map(({ link }) => (
+  link && 
+  <a key={link}
+    href="https://search.opengazettes.org.za/text/25860?page=31"
+    target="_blank"
+    rel="noopener noreferrer"
+  >{link}</a>
+));
+
+const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info }) => (
   <p key={info}>
     {info}
-    {link &&
-    <a
-      href="https://search.opengazettes.org.za/text/25860?page=31"
-      target="_blank"
-      rel="noopener noreferrer"
-    >{link}</a>}
+    {createLink(additionalInfo)}
   </p>
 ));
 
