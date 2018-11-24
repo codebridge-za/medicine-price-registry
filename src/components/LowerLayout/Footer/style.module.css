@@ -1,3 +1,8 @@
+.logoContainer {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 20px;
+}
+
 .logo {
   width: 150px;
   display: block;
@@ -5,14 +10,49 @@
   padding-bottom: 30px;
 }
 
+.paragraph {
+  margin-top: 0;
+}
+
 .collectionDateAndContact {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media(min-width: 415px) {
+  .collectionDateAndContact {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .collectionDateAndContact p {
+    padding: 0 10px;
+  }
 }
 
 .sponsor {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media(min-width: 415px) {
+  .sponsor {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .sponsor p {
+    padding: 0 10px;
+    margin-top: 10px;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: #3a87ad;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #2a6496;
 }
