@@ -1,0 +1,18 @@
+.logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.collectionDateAndContact {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.sponsor {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
