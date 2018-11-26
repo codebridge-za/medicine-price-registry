@@ -14,7 +14,6 @@ class InputForm extends Component {
   render() {
     const { content } = this.state;
     return (
-      <div>
         <form className={classes.form}>
           <label>Search for a medicine:</label>
           <input
@@ -24,7 +23,6 @@ class InputForm extends Component {
             onChange={this.changeHandler}
           />
         </form>
-      </div>
     );
   }
 }

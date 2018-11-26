@@ -9,27 +9,25 @@ const createList = listContainer => listContainer.map(({ list }) => (
 ));
 
 const createLink = additionalInfo => additionalInfo.map(({ link }) => {
-  if (link) {
-    return (
-      <a
-        className={classes.link}
-        key={link}
-        href="https://search.opengazettes.org.za/text/25860?page=31"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {link}
-      </a>
-    );
+  if (!link) {
+    return null;
   }
+
+  return (
+    <a
+      className={classes.link}
+      key={link}
+      href="https://search.opengazettes.org.za/text/25860?page=31"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {link}
+    </a>
+  );
 });
 
 const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link }) => (
-  <p
-    key={info}>
-    {info}
-    {link && createLink(additionalInfo)}
-  </p>
+  <p key={info}> {info} {link && createLink(additionalInfo)}</p>
 ));
 
 const createDetails = details => details.map(detailsContent => {
