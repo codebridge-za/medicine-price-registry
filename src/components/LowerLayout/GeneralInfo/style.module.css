@@ -1,7 +1,7 @@
-.vessel {
+.container {
   border: 1px solid #beeef7;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 20px 10px;
 }
 
 .heading {
@@ -15,4 +15,14 @@
 
 .content {
   padding: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #3a87ad;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #2a6496;
 }
