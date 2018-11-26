@@ -1,20 +1,9 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.9em;
+  font-size: 0.85em;
   line-height: 1.5;
   color: #333333;
   background-color: #ffffff;
-}
-
-.container {
-  max-width: 60%;
-  margin: 0 auto;
-}
-
-.containerWithUnderline {
-  max-width: 60%;
-  margin: 50px auto;
-  border-bottom: 1px solid #eeeeee;
 }
 
 p {

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import global from '../../../styles.module.css';
 import classes from './style.module.css';
 
 const createList = listContainer => listContainer.map(({ list }) => (
@@ -10,23 +9,26 @@ const createList = listContainer => listContainer.map(({ list }) => (
 ));
 
 const createLink = additionalInfo => additionalInfo.map(({ link }) => {
-  if (!link) {
-    return null;
+  if (link) {
+    return (
+      <a
+        className={classes.link}
+        key={link}
+        href="https://search.opengazettes.org.za/text/25860?page=31"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {link}
+      </a>
+    );
   }
-
-  return (
-    <a key={link}
-      href="https://search.opengazettes.org.za/text/25860?page=31"
-      target="_blank"
-      rel="noopener noreferrer"
-    >{link}</a>
-  );
 });
 
-const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info }) => (
-  <p key={info}>
+const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link }) => (
+  <p
+    key={info}>
     {info}
-    {createLink(additionalInfo)}
+    {link && createLink(additionalInfo)}
   </p>
 ));
 
@@ -39,7 +41,7 @@ const createDetails = details => details.map(detailsContent => {
   } = detailsContent;
   
   return (
-      <div className={classes.vessel} key={heading}>
+      <div key={heading}>
         <h3 className={classes.heading}>{heading}</h3>
         <div className={classes.content}>
           <p>{firstParagraph}</p>
@@ -51,9 +53,11 @@ const createDetails = details => details.map(detailsContent => {
 });
 const GeneralInfo = ({ copy }) => {
   const { details } = copy;
-  return (<div className={global.container}>
-    {createDetails(details)}
-  </div>);
+  return (
+    <div className={classes.container}>
+      {createDetails(details)}
+    </div>
+  );
 };
 
 export default GeneralInfo;
