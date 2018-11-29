@@ -27,7 +27,10 @@ const createLink = additionalInfo => additionalInfo.map(({ link }) => {
 });
 
 const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link }) => (
-  <p key={info}> {info} {link && createLink(additionalInfo)}</p>
+  <p key={info}>
+    {info}
+    {link && createLink(additionalInfo)}
+  </p>
 ));
 
 const createDetails = details => details.map(detailsContent => {
