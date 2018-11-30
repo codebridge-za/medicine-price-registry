@@ -6,11 +6,11 @@
 .header {
   padding: 0 20px;
   font-weight: 500;
-  font-size: 2.2em;
+  font-size: 2.2rem;
 }
 
 @media(min-width: 415px) {
   .header {
-    font-size: 2.5em;
+    font-size: 2.5rem;
   }
 }
