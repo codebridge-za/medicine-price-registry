@@ -1,14 +1,11 @@
 .form {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 30px;
 }
 
-label {
-  margin-bottom: 10px;
-}
-
 input {
+  display: block;
+  width: fill-available;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #d6d6d6;
