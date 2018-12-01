@@ -26,7 +26,7 @@
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watchAll"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
@@ -34,6 +34,7 @@
     "babel-jest": "^23.6.0",
     "babel-preset-gatsby": "^0.1.5",
     "enzyme": "^3.7.0",
+    "enzyme-adapter-react-15": "^1.2.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
