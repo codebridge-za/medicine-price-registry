@@ -8,26 +8,26 @@ class InputForm extends Component {
     content: ''
   }
 
-  // fetchData = () => {
-  //   fetch('../../../api/api.json')
-  //     .then(response => response.json())
-  //     .then(parsedJSON => console.log(parsedJSON.results))
-  //     .catch(error => console.log('parsing failed:', error));
-  // }
+  fetchData = () => {
+    fetch('http://localhost:8000/api/api.json')
+      .then(response => response.json())
+      .then(parsedJSON => console.log(parsedJSON))
+      .catch(error => console.log('parsing failed:', error));
+  }
 
-  // submitForm = event => {
-  //   event.preventDefault();
+  submitForm = event => {
+    event.preventDefault();
 
-  //   this.fetchData();
+    this.fetchData();
 
-  //   // fetch('https://randomuser.me/api/')
-  //   //   .then(response => response.json())
-  //   //   .then(parsedJSON => console.log(parsedJSON.results))
-  //   //   .catch(error => console.log('parsing failed:', error));
+    // fetch('https://randomuser.me/api/')
+    //   .then(response => response.json())
+    //   .then(parsedJSON => console.log(parsedJSON.results))
+    //   .catch(error => console.log('parsing failed:', error));
     
-  //   this.setState({ content: '' });
+    this.setState({ content: '' });
 
-  // }
+  }
 
   changeHandler = event => {
     this.setState({content: event.target.value});
@@ -36,7 +36,7 @@ class InputForm extends Component {
   render() {
     const { content } = this.state;
     return (
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={this.submitForm}>
           <label>Search for a medicine:</label>
           <input
             type="text"

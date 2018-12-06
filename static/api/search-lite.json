@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Lamictin P2 (2mg effervescent tablet)", 
+        "dosage_form": "effervescent tablet", 
+        "id": 3941, 
+        "sep": "R 83.47", 
+        "nappi_code": "704533001"
+    }, 
+    {
+        "name": "Lamictin P5   (5mg effervescent tablet)", 
+        "dosage_form": "effervescent tablet", 
+        "id": 4046, 
+        "sep": "R 263.37", 
+        "nappi_code": "813885019"
+    }, 
+    {
+        "name": "Lamictin P25  (25mg effervescent tablet)",
+        "dosage_form": "effervescent tablet", 
+        "id": 4047, 
+        "sep": "R 266.30", 
+        "nappi_code": "813893003"
+    }, 
+    {
+        "name": "Lamictin 25 (25mg tablet)", 
+        "dosage_form": "tablet", 
+        "id": 4037, 
+        "sep": "R 266.30", 
+        "nappi_code": "805505008"
+    }, 
+    {
+        "name": "Lamictin 50 (50mg tablet)", 
+        "dosage_form": "tablet", 
+        "id": 4038, 
+        "sep": "R 391.17", 
+        "nappi_code": "805513019"
+    }, 
+    {
+        "name": "Lamictin P50  (50mg effervescent tablet)", 
+        "dosage_form": "effervescent tablet", 
+        "id": 4088, 
+        "sep": "R 391.17", 
+        "nappi_code": "891708006"
+    }, 
+    {
+        "name": "Lamictin 100 (100mg tablet)", 
+        "dosage_form": "tablet", 
+        "id": 4039, 
+        "sep": "R 568.39", 
+        "nappi_code": "805521003"
+    }, 
+    {
+        "name": "Lamictin P100 (100mg effervescent tablet)", 
+        "dosage_form": "effervescent tablet", 
+        "id": 4048, 
+        "sep": "R 568.39", 
+        "nappi_code": "813907004"
+    }, 
+    {
+        "name": "Lamictin P200 (200mg effervescent tablet)", 
+        "dosage_form": "effervescent tablet", 
+        "id": 4089, 
+        "sep": "R 999.78", 
+        "nappi_code": "891716002"
+    }, 
+    {
+        "name": "Lamictin 200 (200mg tablet)", 
+        "dosage_form": "tablet", 
+        "id": 4059, 
+        "sep": "R 999.78", 
+        "nappi_code": "819034002"
+    },
+    {
+        "name": "Xylestesin-A",
+        "dosage_form": "injection",
+        "id": 1,
+        "sep": "R 376.77",
+        "nappi_code": "703312001"
+     },
+    {
+        "name": "Prozac 20 (20mg capsule)",
+        "dosage_form": "capsule",
+        "id": 3389,
+        "sep": "R 539.24",
+        "nappi_code": "757969011"
+    },
+    {
+        "name": "Prozac Tablets (20mg tablet)",
+        "dosage_form": "tablet",
+        "id": 3395,
+        "sep": "R 539.25",
+        "nappi_code": "822981017"
+    }
+]

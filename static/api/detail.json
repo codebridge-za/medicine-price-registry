@@ -1,0 +1,239 @@
+[
+{
+    "dosage_form": "effervescent tablet", 
+    "nappi_code": "704533001", 
+    "name": "Lamictin P2", 
+    "num_packs": 1, 
+    "is_generic": "Originator", 
+    "schedule": "S3", 
+    "sep": "R 83.47", 
+    "cost_per_unit": "R 2.78", 
+    "id": 3941, 
+    "ingredients": [
+        {
+            "name": "Lamotrigine", 
+            "strength": 2, 
+            "unit": "mg"
+        }
+    ], 
+    "regno": "36/2.5/0407", 
+    "pack_size": 30.0, 
+    "dispensing_fee": "R 37.34"
+},
+{
+    "dosage_form": "effervescent tablet",
+    "nappi_code": "813885019",
+    "name": "Lamictin P5 ",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 263.37",
+    "cost_per_unit": "R 2.63",
+    "id": 4046,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 5,
+    "unit": "mg"
+    }
+    ],
+    "regno": "29/2.5/0303",
+    "pack_size": 100,
+    "dispensing_fee": "R 92.46"
+},
+
+{
+        "dosage_form": "effervescent tablet",
+        "nappi_code": "813893003",
+        "name": "Lamictin P25 ",
+        "num_packs": 1,
+        "is_generic": "Originator",
+        "schedule": "S3",
+        "sep": "R 266.30",
+        "cost_per_unit": "R 4.44",
+        "id": 4047,
+        "ingredients": [
+        {
+        "name": "Lamotrigine",
+        "strength": 25,
+        "unit": "mg"
+        }
+        ],
+        "regno": "29/2.5/0304",
+        "pack_size": 60,
+        "dispensing_fee": "R 93.27"
+},
+{
+    "dosage_form": "tablet",
+    "nappi_code": "805505008",
+    "name": "Lamictin 25",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 266.30",
+    "cost_per_unit": "R 4.44",
+    "id": 4037,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 25,
+    "unit": "mg"
+    }
+    ],
+    "regno": "Z/2.5/280",
+    "pack_size": 60,
+    "dispensing_fee": "R 93.27"
+},
+{
+    "dosage_form": "tablet",
+    "nappi_code": "805513019",
+    "name": "Lamictin 50",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 391.17",
+    "cost_per_unit": "R 6.52",
+    "id": 4038,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 50,
+    "unit": "mg"
+    }
+    ],
+    "regno": "Z/2.5/281",
+    "pack_size": 60,
+    "dispensing_fee": "R 127.62"
+},
+{
+    "dosage_form": "effervescent tablet",
+    "nappi_code": "891708006",
+    "name": "Lamictin P50 ",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 391.17",
+    "cost_per_unit": "R 6.52",
+    "id": 4088,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 50,
+    "unit": "mg"
+    }
+    ],
+    "regno": "32/2.5/0459",
+    "pack_size": 60,
+    "dispensing_fee": "R 127.62"
+},
+{
+    "dosage_form": "tablet",
+    "nappi_code": "805521003",
+    "name": "Lamictin 100",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 568.39",
+    "cost_per_unit": "R 9.47",
+    "id": 4039,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 100,
+    "unit": "mg"
+    }
+    ],
+    "regno": "Z/2.5/282",
+    "pack_size": 60,
+    "dispensing_fee": "R 155.71"
+},
+{
+    "dosage_form": "effervescent tablet",
+    "nappi_code": "813907004",
+    "name": "Lamictin P100",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 568.39",
+    "cost_per_unit": "R 9.47",
+    "id": 4048,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 100,
+    "unit": "mg"
+    }
+    ],
+    "regno": "29/2.5/0305",
+    "pack_size": 60,
+    "dispensing_fee": "R 155.71"
+},
+{
+    "dosage_form": "effervescent tablet",
+    "nappi_code": "891716002",
+    "name": "Lamictin P200",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 999.78",
+    "cost_per_unit": "R 16.66",
+    "id": 4089,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 200,
+    "unit": "mg"
+    }
+    ],
+    "regno": "32/2.5/0460",
+    "pack_size": 60,
+    "dispensing_fee": "R 219.18"
+},
+{
+    "dosage_form": "tablet",
+    "nappi_code": "819034002",
+    "name": "Lamictin 200",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S3",
+    "sep": "R 999.78",
+    "cost_per_unit": "R 16.66",
+    "id": 4059,
+    "ingredients": [
+    {
+    "name": "Lamotrigine",
+    "strength": 200,
+    "unit": "mg"
+    }
+    ],
+    "regno": "29/2.5/0472",
+    "pack_size": 60,
+    "dispensing_fee": "R 219.18"
+},
+{
+    "dosage_form": "injection",
+    "nappi_code": "703312001",
+    "name": "Xylestesin-A",
+    "num_packs": 1,
+    "is_generic": "Originator",
+    "schedule": "S4",
+    "sep": "R 376.77",
+    "cost_per_unit": "R 7.54",
+    "id": 1,
+    "ingredients": [
+    {
+    "name": "Lidocaine Hydrochloride",
+    "strength": 20,
+    "unit": "mg/ml"
+    },
+    {
+    "name": "Adrenaline",
+    "strength": 0.012,
+    "unit": "mg/ml"
+    }
+    ],
+    "regno": "U/4/104",
+    "pack_size": 50,
+    "dispensing_fee": "R 123.66"
+    }
+]
