@@ -2,14 +2,12 @@ import React from 'react'
 
 import Layout from '../hoc/Layout';
 import InputForm from '../components/InputForm';
-import MedicineList from '../components/MedicineList';
-
-import apiCopy from '../../static/api/api.json';
+import MedicineBasicSearch from '../components/MedicineBasicSearch';
 
 const IndexPage = () => (
   <Layout>
     <InputForm />
-    <MedicineList medicines={apiCopy} />
+    <MedicineBasicSearch />
   </Layout>
 );
 
