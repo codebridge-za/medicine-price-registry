@@ -5,9 +5,9 @@ import capsule from '../../../static/images/capsule_24.png';
 import syrup from '../../../static/images/syrup_24.png';
 import classes from './style.module.css';
 
-const callImage = dosageForm => {
+const callImage = dosage_form => {
   let medIcon = tablet;
-    switch (dosageForm) {
+    switch (dosage_form) {
       case ('suspension'):
         medIcon = syrup;
         break;
@@ -20,6 +20,7 @@ const callImage = dosageForm => {
       default:
         medIcon = tablet;
     }
+
   return (
     <div className={classes.imageContainerLeft}>
       <img className={classes.medIcon} src={medIcon} alt='medicine icon' />
@@ -40,9 +41,9 @@ const callPriceAndGenerics = price => (
 
 const MedicineBasicSearch = ({ results }) => (
   
-  results.map(({ dosageForm, name, sep: price, nappi_code }) => (
+  results.map(({ dosage_form, name, sep: price, nappi_code }) => (
     <div className={classes.container} key={nappi_code}>
-      {callImage(dosageForm)}
+      {callImage(dosage_form)}
       <div className={classes.descriptionContainerRight}>
         {callName(name)}
         {callPriceAndGenerics(price)}
