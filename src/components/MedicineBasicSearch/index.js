@@ -21,7 +21,9 @@ const callImage = dosageForm => {
         medIcon = tablet;
     }
   return (
-    <img className={classes.medIcon} src={medIcon} alt='medicine icon' />
+    <div className={classes.imageContainerLeft}>
+      <img className={classes.medIcon} src={medIcon} alt='medicine icon' />
+    </div>
   );
 }
 
@@ -29,13 +31,13 @@ const MedicineBasicSearch = ({ results }) => (
   
   results.map(({ dosageForm, name, sep: price, nappi_code }) => (
     <div className={classes.container} key={nappi_code}>
-      <div className={classes.innerContainerLeft}>
-        {callImage(dosageForm)}
+      {callImage(dosageForm)}
+      <div className={classes.descriptionContainerRight}>
         <div className={classes.name}>{name}</div>
-      </div>
-      <div className={classes.innerContainerRight}>
-        <div className={classes.price}>{price}</div>
-        <div className={classes.generics}>Find Generics</div>
+        <div className={classes.farRightContainer}>
+          <div className={classes.price}>{price}</div>
+          <div className={classes.generics}>Find Generics</div>
+        </div>
       </div>
     </div>
   ))
