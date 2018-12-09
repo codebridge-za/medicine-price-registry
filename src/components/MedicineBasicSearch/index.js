@@ -27,17 +27,25 @@ const callImage = dosageForm => {
   );
 }
 
+const callName = name => (
+  <div className={classes.name}>{name}</div>
+);
+
+const callPriceAndGenerics = price => (
+  <div className={classes.farRightContainer}>
+    <div className={classes.price}>{price}</div>
+    <div className={classes.generics}>Find Generics</div>
+  </div>
+);
+
 const MedicineBasicSearch = ({ results }) => (
   
   results.map(({ dosageForm, name, sep: price, nappi_code }) => (
     <div className={classes.container} key={nappi_code}>
       {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
-        <div className={classes.name}>{name}</div>
-        <div className={classes.farRightContainer}>
-          <div className={classes.price}>{price}</div>
-          <div className={classes.generics}>Find Generics</div>
-        </div>
+        {callName(name)}
+        {callPriceAndGenerics(price)}
       </div>
     </div>
   ))
