@@ -24,7 +24,6 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
@@ -38,7 +37,6 @@
     "enzyme-adapter-react-16": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
-    "prettier": "^1.14.2",
     "react-test-renderer": "^16.6.3",
     "regenerator-runtime": "^0.13.1"
   },
