@@ -5,28 +5,24 @@ import capsule from '../../../static/images/capsule_24.png';
 import syrup from '../../../static/images/syrup_24.png';
 import classes from './style.module.css';
 
-const callImage = dosage_form => {
-  let medIcon = tablet;
-    switch (dosage_form) {
-      case ('suspension'):
-        medIcon = syrup;
-        break;
-      case ('effervescent tablet' || 'tablet'):
-        medIcon = tablet;
-        break;
-      case ('capsule'):
-        medIcon = capsule;
-        break;
-      default:
-        medIcon = tablet;
-    }
+const callIcon = (dosage_form) => {
+  switch (dosage_form) {
+    case ('suspension'): return syrup;
+    case ('effervescent tablet'): return tablet;
+    case ('tablet'): return tablet;
+    case ('capsule'): return capsule;
+    default: return tablet;
+  }
+};
 
+const callImage = (dosage_form) => {
+  const medIcon = callIcon(dosage_form);
   return (
     <div className={classes.imageContainerLeft}>
-      <img className={classes.medIcon} src={medIcon} alt='medicine icon' />
+      <img className={classes.medIcon} src={medIcon} alt={dosage_form} />
     </div>
   );
-}
+};
 
 const callName = name => (
   <div className={classes.name}>{name}</div>
@@ -40,8 +36,13 @@ const callPriceAndGenerics = price => (
 );
 
 const MedicineBasicSearch = ({ results }) => (
-  
-  results.map(({ dosage_form, name, sep: price, nappi_code }) => (
+
+  results.map(({
+    dosage_form,
+    name,
+    sep: price,
+    nappi_code,
+  }) => (
     <div className={classes.container} key={nappi_code}>
       {callImage(dosage_form)}
       <div className={classes.descriptionContainerRight}>
