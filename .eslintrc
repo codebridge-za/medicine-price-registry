@@ -3,7 +3,6 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": 0,
-    "react/prop-types": [2, { "ignore": ["children"] }],
     "react/jsx-one-expression-per-line": ["<enabled>", { "allow": "none" }],
   },
   "parser": "babel-eslint",

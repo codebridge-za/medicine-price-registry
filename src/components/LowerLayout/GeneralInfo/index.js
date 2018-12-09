@@ -53,6 +53,7 @@ const createDetails = details => details.map((detailsContent) => {
     </div>
   );
 });
+
 const GeneralInfo = ({ copy }) => {
   const { details } = copy;
   return (
