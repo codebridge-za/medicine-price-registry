@@ -15,9 +15,10 @@ class InputForm extends Component {
     const { content } = this.state;
     return (
       <form className={classes.form}>
-        <label htmlFor="boom">Search for a medicine:
+        <label htmlFor="medicine">
+          <span>Search for a medicine:</span>
           <input
-            id="boom"
+            id="medicine"
             type="text"
             placeholder="e.g. salbutamol or asthavent"
             value={content}
