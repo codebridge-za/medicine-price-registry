@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './style.module.css';
 
@@ -33,25 +34,26 @@ const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link 
   </p>
 ));
 
-const createDetails = details => details.map(detailsContent => {
+const createDetails = details => details.map((detailsContent) => {
   const {
     heading,
-    firstParagraph, 
+    firstParagraph,
     lists: listContainer,
-    additionalInfo
+    additionalInfo,
   } = detailsContent;
-  
+
   return (
-      <div key={heading}>
-        <h3 className={classes.heading}>{heading}</h3>
-        <div className={classes.content}>
-          <p>{firstParagraph}</p>
-          {createList(listContainer)}
-          {additionalInfo && createAdditionalInfo(additionalInfo)}
-        </div>
+    <div key={heading}>
+      <h3 className={classes.heading}>{heading}</h3>
+      <div className={classes.content}>
+        <p>{firstParagraph}</p>
+        {createList(listContainer)}
+        {additionalInfo && createAdditionalInfo(additionalInfo)}
       </div>
-    );
+    </div>
+  );
 });
+
 const GeneralInfo = ({ copy }) => {
   const { details } = copy;
   return (
@@ -59,6 +61,32 @@ const GeneralInfo = ({ copy }) => {
       {createDetails(details)}
     </div>
   );
+};
+
+const listsSchema = PropTypes.arrayOf(
+  PropTypes.shape({
+    list: PropTypes.string,
+  }),
+);
+
+const additionalInfoSchema = PropTypes.arrayOf(
+  PropTypes.shape({
+    info: PropTypes.string,
+    link: PropTypes.string,
+  }),
+);
+
+GeneralInfo.propTypes = {
+  copy: PropTypes.shape({
+    details: PropTypes.arrayOf(
+      PropTypes.shape({
+        heading: PropTypes.string,
+        firstParagraph: PropTypes.string,
+        lists: listsSchema,
+        additionalInfo: additionalInfoSchema,
+      }),
+    ),
+  }).isRequired,
 };
 
 export default GeneralInfo;
