@@ -14,8 +14,7 @@ class SearchTool extends Component {
       .then(response => response.json())
       .then(parsedJSON => (
         this.setState({ results: parsedJSON })
-      ))
-      .catch(error => console.log('parsing failed:', error));
+      ));
   }
 
   submitForm = (event) => {

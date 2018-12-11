@@ -5,8 +5,8 @@ import capsule from '../../../static/images/capsule_24.png';
 import syrup from '../../../static/images/syrup_24.png';
 import classes from './style.module.css';
 
-const callIcon = (dosage_form) => {
-  switch (dosage_form) {
+const callIcon = (dosageForm) => {
+  switch (dosageForm) {
     case ('suspension'): return syrup;
     case ('effervescent tablet'): return tablet;
     case ('tablet'): return tablet;
@@ -15,11 +15,11 @@ const callIcon = (dosage_form) => {
   }
 };
 
-const callImage = (dosage_form) => {
-  const medIcon = callIcon(dosage_form);
+const callImage = (dosageForm) => {
+  const medIcon = callIcon(dosageForm);
   return (
     <div className={classes.imageContainerLeft}>
-      <img className={classes.medIcon} src={medIcon} alt={dosage_form} />
+      <img className={classes.medIcon} src={medIcon} alt={dosageForm} />
     </div>
   );
 };
@@ -38,13 +38,13 @@ const callPriceAndGenerics = price => (
 const MedicineBasicSearch = ({ results }) => (
 
   results.map(({
-    dosage_form,
+    dosage_form: dosageForm,
     name,
     sep: price,
-    nappi_code,
+    nappi_code: nappiCode,
   }) => (
-    <div className={classes.container} key={nappi_code}>
-      {callImage(dosage_form)}
+    <div className={classes.container} key={nappiCode}>
+      {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
         {callName(name)}
         {callPriceAndGenerics(price)}
