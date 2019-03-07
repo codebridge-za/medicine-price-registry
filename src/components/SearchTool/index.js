@@ -9,8 +9,8 @@ class SearchTool extends Component {
     results: [],
   }
 
-  fetchData = () => {
-    fetch('http://localhost:8000/api/search-lite.json')
+  fetchData = (content) => {
+    fetch(`https://mpr.code4sa.org/api/v2/search?q=${content}`)
       .then(response => response.json())
       .then(parsedJSON => (
         this.setState({ results: parsedJSON })
@@ -26,7 +26,7 @@ class SearchTool extends Component {
     this.setState({ content: event.target.value }, () => {
       const { content } = this.state;
       if (content && content.length > 3) {
-        this.fetchData();
+        this.fetchData(content);
       }
     });
   }
