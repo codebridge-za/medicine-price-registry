@@ -28,14 +28,14 @@ const callName = name => (
   <div className={classes.name}>{name}</div>
 );
 
-const callPriceAndGenerics = price => (
+const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
   <div className={classes.farRightContainer}>
     <div className={classes.price}>{price}</div>
-    <div className={classes.generics}>Find Generics</div>
+    <div className={classes.generics} onClick={() => fetchGenerics(nappiCode)}>Find Generics</div>
   </div>
 );
 
-const createMedicinePanel = (props) => {
+const createMedicinePanel = fetchGenerics => (props) => {
   const {
     dosage_form: dosageForm,
     name,
@@ -48,12 +48,12 @@ const createMedicinePanel = (props) => {
       {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
         {callName(name)}
-        {callPriceAndGenerics(price)}
+        {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
       </div>
     </div>
   );
 };
 
-const MedicineBasicSearch = ({ results }) => results.map(createMedicinePanel);
+const MedicineBasicSearch = ({ results, fetchGenerics }) => results.map(createMedicinePanel(fetchGenerics));
 
 export default MedicineBasicSearch;

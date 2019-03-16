@@ -25,12 +25,13 @@ const Markup = (props) => {
     results,
     submitForm,
     changeHandler,
+    fetchGenerics,
   } = props;
 
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
-      <MedicineBasicSearch results={results} />
+      <MedicineBasicSearch {...{ fetchGenerics }} results={results} />
     </React.Fragment>
   );
 };
