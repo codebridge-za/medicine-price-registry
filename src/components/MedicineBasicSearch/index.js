@@ -35,14 +35,15 @@ const callPriceAndGenerics = price => (
   </div>
 );
 
-const MedicineBasicSearch = ({ results }) => (
-
-  results.map(({
+const createMedicinePanel = (props) => {
+  const {
     dosage_form: dosageForm,
     name,
     sep: price,
     nappi_code: nappiCode,
-  }) => (
+  } = props;
+
+  return (
     <div className={classes.container} key={nappiCode}>
       {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
@@ -50,7 +51,9 @@ const MedicineBasicSearch = ({ results }) => (
         {callPriceAndGenerics(price)}
       </div>
     </div>
-  ))
-);
+  );
+};
+
+const MedicineBasicSearch = ({ results }) => results.map(createMedicinePanel);
 
 export default MedicineBasicSearch;
