@@ -9,7 +9,7 @@ class SearchTool extends Component {
     results: [],
   }
 
-  fetchData = (content) => {
+  fetchBasicSearch = (content) => {
     fetch(`https://mpr.code4sa.org/api/v2/search?q=${content}`)
       .then(response => response.json())
       .then((parsedJSON) => {
@@ -27,7 +27,7 @@ class SearchTool extends Component {
     this.setState({ content: event.target.value }, () => {
       const { content } = this.state;
       if (content && content.length > 3) {
-        this.fetchData(content);
+        this.fetchBasicSearch(content);
       }
     });
   }
@@ -40,7 +40,6 @@ class SearchTool extends Component {
       results: state.results,
       changeHandler: this.changeHandler,
       submitForm: this.submitForm,
-      fetchData: this.fetchData,
     };
 
     return <Markup {...passedProps} />;
