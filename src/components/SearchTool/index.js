@@ -33,10 +33,9 @@ class SearchTool extends Component {
   }
 
   render() {
-    const { state, props } = this;
+    const { state } = this;
 
     const passedProps = {
-      ...props,
       content: state.content,
       results: state.results,
       changeHandler: this.changeHandler,
