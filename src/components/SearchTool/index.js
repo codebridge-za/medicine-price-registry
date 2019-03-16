@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { uniqBy } from 'lodash';
-import MedicineBasicSearch from '../MedicineBasicSearch';
+import Markup from './Markup';
 
-import classes from './style.module.css';
 
 class SearchTool extends Component {
   state = {
@@ -34,25 +33,20 @@ class SearchTool extends Component {
   }
 
   render() {
-    const { content, results } = this.state;
-    return (
-      <React.Fragment>
-        <form className={classes.form} onSubmit={this.submitForm}>
-          <label htmlFor="medicine">
-            <span>Search for a medicine:</span>
-            <input
-              id="medicine"
-              type="text"
-              placeholder="e.g. salbutamol or asthavent"
-              value={content}
-              onChange={this.changeHandler}
-            />
-          </label>
-        </form>
-        <MedicineBasicSearch results={results} />
-      </React.Fragment>
-    );
+    const { state, props } = this;
+
+    const passedProps = {
+      ...props,
+      content: state.content,
+      results: state.results,
+      changeHandler: this.changeHandler,
+      submitForm: this.submitForm,
+      fetchData: this.fetchData,
+    };
+
+    return <Markup {...passedProps} />;
   }
 }
+
 
 export default SearchTool;
