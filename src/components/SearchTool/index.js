@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { uniqBy } from 'lodash';
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
@@ -12,9 +13,10 @@ class SearchTool extends Component {
   fetchData = (content) => {
     fetch(`https://mpr.code4sa.org/api/v2/search?q=${content}`)
       .then(response => response.json())
-      .then(parsedJSON => (
-        this.setState({ results: parsedJSON })
-      ));
+      .then((parsedJSON) => {
+        const results = uniqBy(parsedJSON, 'nappi_code');
+        return this.setState({ results });
+      });
   }
 
   submitForm = (event) => {
