@@ -3,9 +3,9 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
 
-const callForm = (submitForm, content, changeHandler) => (
+const callForm = (content, changeHandler) => (
 
-  <form className={classes.form} onSubmit={submitForm}>
+  <form className={classes.form}>
     <label htmlFor="medicine">
       <span>Search for a medicine:</span>
       <input
@@ -23,13 +23,12 @@ const Markup = (props) => {
   const {
     content,
     results,
-    submitForm,
     changeHandler,
   } = props;
 
   return (
     <React.Fragment>
-      {callForm(submitForm, content, changeHandler)}
+      {callForm(content, changeHandler)}
       <MedicineBasicSearch results={results} />
     </React.Fragment>
   );
