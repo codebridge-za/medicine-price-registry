@@ -46,6 +46,8 @@
 }
 
 .generics {
+  background: none;
+  border: none;
   color: #3a87ad;
 }
 
@@ -53,4 +55,8 @@
   cursor: pointer;
   text-decoration: underline;
   color: #2a6496;
+}
+
+.generics:focus {
+  outline: none;
 }

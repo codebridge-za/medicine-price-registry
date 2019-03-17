@@ -1,4 +1,5 @@
 import React from 'react';
+import t from 'prop-types';
 
 import tablet from '../../../static/images/pill_24.png';
 import capsule from '../../../static/images/capsule_24.png';
@@ -31,7 +32,13 @@ const callName = name => (
 const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
   <div className={classes.farRightContainer}>
     <div className={classes.price}>{price}</div>
-    <div className={classes.generics} onClick={() => fetchGenerics(nappiCode)}>Find Generics</div>
+    <button
+      className={classes.generics}
+      onClick={() => fetchGenerics(nappiCode)}
+      type="button"
+    >
+      Find Generics
+    </button>
   </div>
 );
 
@@ -54,6 +61,21 @@ const createMedicinePanel = fetchGenerics => (props) => {
   );
 };
 
-const MedicineBasicSearch = ({ results, fetchGenerics }) => results.map(createMedicinePanel(fetchGenerics));
+const MedicineBasicSearch = ({ results, fetchGenerics }) => (
+  results.map(createMedicinePanel(fetchGenerics))
+);
 
 export default MedicineBasicSearch;
+
+MedicineBasicSearch.propTypes = {
+  results: t.arrayOf(t.shape({
+    dosage_form: t.string,
+    name: t.string,
+    sep: t.string,
+    nappi_code: t.string,
+  })).isRequired,
+};
+
+MedicineBasicSearch.defaultProps = {
+  results: [],
+};
