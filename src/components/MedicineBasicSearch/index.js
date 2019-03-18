@@ -26,12 +26,18 @@ const callImage = (dosageForm) => {
   );
 };
 
-const callDetails = (nappiCode, details) => <DetailsPanel details={details} />;
+const callDetails = (nappiCode, details, fetchDetails) => {
+  fetchDetails(nappiCode);
+  console.log(fetchDetails(nappiCode));
+  return (
+    <DetailsPanel details={details} />
+  );
+};
 
-const callName = (name, nappiCode, fetchDetails, details) => (
+const callName = (name, nappiCode, details, fetchDetails) => (
   <button
     className={classes.name}
-    onClick={() => callDetails(nappiCode, details)}
+    onClick={() => callDetails(nappiCode, details, fetchDetails)}
     type="button"
   >
     {name}
@@ -51,7 +57,7 @@ const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
   </div>
 );
 
-const createMedicinePanel = (fetchGenerics, fetchDetails, details) => (props) => {
+const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) => {
   const {
     dosage_form: dosageForm,
     name,
@@ -63,7 +69,7 @@ const createMedicinePanel = (fetchGenerics, fetchDetails, details) => (props) =>
     <div className={classes.container} key={nappiCode}>
       {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
-        {callName(name, nappiCode, fetchDetails, details)}
+        {callName(name, nappiCode, details, fetchDetails)}
         {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
       </div>
     </div>
@@ -71,7 +77,7 @@ const createMedicinePanel = (fetchGenerics, fetchDetails, details) => (props) =>
 };
 
 const MedicineBasicSearch = ({ results, details, fetchGenerics, fetchDetails }) => (
-  results.map(createMedicinePanel(fetchGenerics, fetchDetails, details))
+  results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))
 );
 
 export default MedicineBasicSearch;

@@ -15,7 +15,7 @@ class SearchTool extends Component {
       .then(response => response.json())
       .then((parsedJSON) => {
         const details = uniqBy(parsedJSON, 'nappi_code');
-        console.log(details);
+        console.log(parsedJSON);
         return this.setState({ details });
       });
   };
