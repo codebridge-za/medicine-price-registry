@@ -24,15 +24,17 @@ const Markup = (props) => {
   const {
     content,
     results,
+    details,
     submitForm,
     changeHandler,
     fetchGenerics,
+    fetchDetails,
   } = props;
 
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
-      <MedicineBasicSearch {...{ fetchGenerics }} results={results} />
+      <MedicineBasicSearch {...{ fetchGenerics, fetchDetails }} results={results} details={details} />
     </React.Fragment>
   );
 };
@@ -47,12 +49,17 @@ Markup.propTypes = {
     sep: t.string,
     nappi_code: t.string,
   })),
+  details: t.arrayOf(t.shape({
+  })),
+
   submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
+  fetchDetails: t.func.isRequired,
 };
 
 Markup.defaultProps = {
   content: '',
   results: [],
+  details: [],
 };

@@ -7,7 +7,18 @@ class SearchTool extends Component {
   state = {
     content: '',
     results: [],
+    details: [],
   }
+
+  fetchDetails = (id) => {
+    fetch(`https://mpr.code4sa.org/api/v2/detail?nappi=${id}`)
+      .then(response => response.json())
+      .then((parsedJSON) => {
+        const details = uniqBy(parsedJSON, 'nappi_code');
+        console.log(details);
+        return this.setState({ details });
+      });
+  };
 
   fetchGenerics = (id) => {
     fetch(`https://mpr.code4sa.org/api/v2/related?nappi=${id}`)
@@ -47,9 +58,11 @@ class SearchTool extends Component {
     const passedProps = {
       content: state.content,
       results: state.results,
+      details: state.details,
       changeHandler: this.changeHandler,
       submitForm: this.submitForm,
       fetchGenerics: this.fetchGenerics,
+      fetchDetails: this.fetchDetails,
     };
 
     return <Markup {...passedProps} />;

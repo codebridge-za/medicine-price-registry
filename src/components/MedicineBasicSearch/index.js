@@ -1,5 +1,6 @@
 import React from 'react';
 import t from 'prop-types';
+import DetailsPanel from '../DetailsPanel';
 
 import tablet from '../../../static/images/pill_24.png';
 import capsule from '../../../static/images/capsule_24.png';
@@ -25,8 +26,16 @@ const callImage = (dosageForm) => {
   );
 };
 
-const callName = name => (
-  <div className={classes.name}>{name}</div>
+const callDetails = (nappiCode, details) => <DetailsPanel details={details} />;
+
+const callName = (name, nappiCode, fetchDetails, details) => (
+  <button
+    className={classes.name}
+    onClick={() => callDetails(nappiCode, details)}
+    type="button"
+  >
+    {name}
+  </button>
 );
 
 const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
@@ -42,7 +51,7 @@ const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
   </div>
 );
 
-const createMedicinePanel = fetchGenerics => (props) => {
+const createMedicinePanel = (fetchGenerics, fetchDetails, details) => (props) => {
   const {
     dosage_form: dosageForm,
     name,
@@ -54,15 +63,15 @@ const createMedicinePanel = fetchGenerics => (props) => {
     <div className={classes.container} key={nappiCode}>
       {callImage(dosageForm)}
       <div className={classes.descriptionContainerRight}>
-        {callName(name)}
+        {callName(name, nappiCode, fetchDetails, details)}
         {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
       </div>
     </div>
   );
 };
 
-const MedicineBasicSearch = ({ results, fetchGenerics }) => (
-  results.map(createMedicinePanel(fetchGenerics))
+const MedicineBasicSearch = ({ results, details, fetchGenerics, fetchDetails }) => (
+  results.map(createMedicinePanel(fetchGenerics, fetchDetails, details))
 );
 
 export default MedicineBasicSearch;
