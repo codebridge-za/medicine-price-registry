@@ -59,11 +59,13 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
   } = props;
   
   return (
-    <div className={classes.container} key={nappiCode}>
-      {callImage(dosageForm)}
-      <div className={classes.descriptionContainerRight}>
-        {callName(name, nappiCode, fetchDetails)}
-        {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
+    <div>
+      <div className={classes.container} key={nappiCode}>
+        {callImage(dosageForm)}
+        <div className={classes.descriptionContainerRight}>
+          {callName(name, nappiCode, fetchDetails)}
+          {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
+        </div>
       </div>
       {nappiCode === details.nappi_code && <DetailsPanel details={details} />}
     </div>
