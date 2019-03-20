@@ -13,11 +13,9 @@ class SearchTool extends Component {
   fetchDetails = (id) => {
     fetch(`https://mpr.code4sa.org/api/v2/detail?nappi=${id}`)
       .then(response => response.json())
-      .then((parsedJSON) => {
-        const details = uniqBy(parsedJSON, 'nappi_code');
-        console.log(parsedJSON);
-        return this.setState({ details });
-      });
+      .then(parsedJSON => (
+        this.setState({ details: parsedJSON })
+      ));
   };
 
   fetchGenerics = (id) => {

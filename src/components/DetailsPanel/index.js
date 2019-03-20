@@ -1,6 +1,6 @@
 import React from 'react';
 
-const createDetailsPanel = (props) => {
+const DetailsPanel = ({ details }) => {
   const {
     sep: price,
     cost_per_unit: costPerUnit,
@@ -14,7 +14,7 @@ const createDetailsPanel = (props) => {
     name,
     nappi_code: nappiCode,
     regno,
-  } = props;
+  } = details;
 
   return (
     <div key={nappiCode}>
@@ -65,8 +65,5 @@ const createDetailsPanel = (props) => {
   );
 };
 
-const DetailsPanel = ({ details }) => (
-  details.map(createDetailsPanel)
-);
 
 export default DetailsPanel;
