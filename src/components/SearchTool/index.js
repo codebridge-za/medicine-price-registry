@@ -2,12 +2,32 @@ import React, { Component } from 'react';
 import { uniqBy } from 'lodash';
 import Markup from './Markup';
 
+import classes from './style.module.css';
+import Loader from '../Loader';
+
+const BaseRequest = {
+  loading: false,
+  error: false,
+  success: false,
+  errMessage: '',
+};
 
 class SearchTool extends Component {
   state = {
     content: null,
     results: [],
-  }
+    request: {
+      ...BaseRequest,
+    },
+
+  };
+
+  updateRequest = obj => this.setState({
+    request: {
+      ...BaseRequest,
+      ...obj,
+    },
+  });
 
   fetchGenerics = (id) => {
     fetch(`https://mpr.code4sa.org/api/v2/related?nappi=${id}`)
@@ -46,6 +66,14 @@ class SearchTool extends Component {
   }
 
   render() {
+        {loading && (
+        <div className={classes.loaderContainer}>
+          <Loader />
+        </div>
+        )}
+        {success && <MedicineBasicSearch results={results} />}
+
+        {error && <div>{errMessage}</div>}
     const { state } = this;
 
     const passedProps = {
