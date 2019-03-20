@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './style.module.css';
 
 const DetailsPanel = ({ details }) => {
   const {
@@ -17,41 +18,41 @@ const DetailsPanel = ({ details }) => {
   } = details;
 
   return (
-    <div key={nappiCode}>
-      <div>
-        <div>
-          <div>Product details</div>
-          <ul>
-            <li>
-              <div>Max price (incl VAT and fees):</div>
+    <div key={nappiCode + regno} className={classes.container}>
+      <div className={classes.detailsContainer}>
+        <div className={classes.productDetails}>
+          <div className={classes.productTitle}>Product details</div>
+          <ul className={classes.listsContainer}>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Max price (incl VAT and fees):</div>
               <div>{price}</div>
             </li>
-            <li>
-              <div>Cost per unit:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Cost per unit:</div>
               <div>{costPerUnit}/{dosageForm}</div>
             </li>
-            <li>
-              <div>Dispensing Fee:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Dispensing Fee:</div>
               <div>{dispensingFee}</div>
             </li>
-            <li>
-              <div>Schedule:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Schedule:</div>
               <div>{schedule}</div>
             </li>
-            <li>
-              <div>Dosage Form:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Dosage Form:</div>
               <div>{dosageForm}</div>
             </li>
-            <li>
-              <div>Tablets/ml/Doses:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Tablets/ml/Doses:</div>
               <div>{packSize}</div>
             </li>
-            <li>
-              <div>Number of packs:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Number of packs:</div>
               <div>{numPacks}</div>
             </li>
-            <li>
-              <div>Generic/Innovator:</div>
+            <li className={classes.list}>
+              <div className={classes.detailKey}>Generic/Innovator:</div>
               <div>{isGeneric}</div>
             </li>
           </ul>
