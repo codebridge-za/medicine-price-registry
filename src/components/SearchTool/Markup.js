@@ -9,7 +9,6 @@ const callMatchingProducts = results => (
 );
 
 const callForm = (submitForm, content, changeHandler) => (
-
   <form className={classes.form} onSubmit={submitForm}>
     <label htmlFor="medicine">
       <span>Search for a medicine:</span>
@@ -17,7 +16,7 @@ const callForm = (submitForm, content, changeHandler) => (
         id="medicine"
         type="text"
         placeholder="e.g. salbutamol or asthavent"
-        value={content}
+        value={content || ''}
         onChange={changeHandler}
       />
     </label>
@@ -28,18 +27,16 @@ const Markup = (props) => {
   const {
     content,
     results,
-    details,
     submitForm,
     changeHandler,
     fetchGenerics,
-    fetchDetails,
   } = props;
 
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
       {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, fetchDetails }} results={results} details={details} />
+      <MedicineBasicSearch {...{ fetchGenerics, results }} />
     </React.Fragment>
   );
 };
@@ -64,7 +61,7 @@ Markup.propTypes = {
 };
 
 Markup.defaultProps = {
-  content: '',
+  content: null,
   results: [],
   details: [],
 };
