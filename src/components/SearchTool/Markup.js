@@ -1,6 +1,7 @@
 import React from 'react';
 import t from 'prop-types';
 import MedicineBasicSearch from '../MedicineBasicSearch';
+import TextField from '@material-ui/core/TextField';
 
 import classes from './style.module.css';
 
@@ -9,19 +10,27 @@ const callMatchingProducts = results => (
 );
 
 const callForm = (submitForm, content, changeHandler) => (
-
-  <form className={classes.form} onSubmit={submitForm}>
-    <label htmlFor="medicine">
-      <span>Search for a medicine:</span>
-      <input
-        id="medicine"
-        type="text"
-        placeholder="e.g. salbutamol or asthavent"
-        value={content}
-        onChange={changeHandler}
-      />
-    </label>
-  </form>
+  <React.Fragment>
+    {/* <form className={classes.form} onSubmit={submitForm}>
+      <label htmlFor="medicine">
+        <span>Search for a medicine:</span>
+        <input
+          id="medicine"
+          type="text"
+          placeholder="e.g. salbutamol or asthavent"
+          value={content}
+          onChange={changeHandler}
+        />
+      </label>
+    </form> */}
+    <TextField
+      label="e.g. salbutamol or asthavent"
+      type="search"
+      variant="outlined"
+      value={content}
+      onChange={changeHandler}
+    />
+  </React.Fragment>
 );
 
 const Markup = (props) => {
