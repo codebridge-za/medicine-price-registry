@@ -12,7 +12,7 @@ const callForm = (submitForm, content, changeHandler) => (
         id="medicine"
         type="text"
         placeholder="e.g. salbutamol or asthavent"
-        value={content}
+        value={content || ''}
         onChange={changeHandler}
       />
     </label>
