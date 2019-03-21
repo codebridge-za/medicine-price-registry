@@ -28,6 +28,7 @@ const callListOfProducts = (details) => {
     num_packs: numPacks,
     is_generic: isGeneric,
   } = details;
+
   return (
     <ul className={classes.listsContainer}>
       <li className={classes.list}>
