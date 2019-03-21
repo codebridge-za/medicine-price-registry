@@ -3,6 +3,8 @@ import t from 'prop-types';
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
+import Loader from '../Loader';
+
 
 const callMatchingProducts = results => (
   <div>Matching products and/or ingredients: {results.length}</div>
@@ -25,6 +27,10 @@ const callForm = (submitForm, content, changeHandler) => (
 
 const Markup = (props) => {
   const {
+    loading,
+    error,
+    success,
+    errMessage,
     content,
     results,
     submitForm,
@@ -36,7 +42,10 @@ const Markup = (props) => {
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
       {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, results }} />
+      {loading && <Loader />}
+      {success && <MedicineBasicSearch {...{ fetchGenerics, results }} />}
+      {error && <div>{errMessage}</div>}
+
     </React.Fragment>
   );
 };
@@ -45,6 +54,10 @@ export default Markup;
 
 Markup.propTypes = {
   content: t.string,
+  loading: t.bool,
+  error: t.bool,
+  success: t.bool,
+  errMessage: t.string,
   results: t.arrayOf(t.shape({
     dosage_form: t.string,
     name: t.string,
@@ -64,4 +77,8 @@ Markup.defaultProps = {
   content: null,
   results: [],
   details: [],
+  loading: false,
+  error: false,
+  success: false,
+  errMessage: '',
 };
