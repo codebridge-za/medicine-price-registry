@@ -52,9 +52,9 @@ Get the last updated date https://mpr.code4sa.org/api/v2/last-updated
 - This project is following the *eslint-config-airbnb* styleguide.
 
 ## TODO
-- [] Change style convention to make use of **Styled Components** as well as **Material UI** components.
-- [] Add CSS spinner before each ajax call.
-- [] Redesign and submit new feature ideas.
-- [] Create a script that downloads the latest database instead of shipping a sqlite db with the repo.
-- [] It might be useful to compare prices over time.
-- [] Seems like there are some spelling errors in the database - e.g. paracetamol and paracetemol. Might need to clean the database through some sort of fuzzy match and possibly report those errors back to mpr
+- [ ] Change style convention to make use of **Styled Components** as well as **Material UI** components.
+- [ ] Add CSS spinner before each ajax call.
+- [ ] Redesign and submit new feature ideas.
+- [ ] Create a script that downloads the latest database instead of shipping a sqlite db with the repo.
+- [ ] It might be useful to compare prices over time.
+- [ ] Seems like there are some spelling errors in the database - e.g. paracetamol and paracetemol. Might need to clean the database through some sort of fuzzy match and possibly report those errors back to mpr
