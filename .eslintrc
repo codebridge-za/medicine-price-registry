@@ -4,6 +4,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "linebreak-style": 0,
     "react/jsx-one-expression-per-line": ["<enabled>", { "allow": "none" }],
+    "camelcase": [2, {"properties": "never"}]
   },
   "parser": "babel-eslint",
   "env": {

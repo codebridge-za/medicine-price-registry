@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Layout from '../hoc/Layout';
-import InputForm from '../components/InputForm';
+import SearchTool from '../components/SearchTool';
 
 const IndexPage = () => (
   <Layout>
-    <InputForm />
+    <SearchTool />
   </Layout>
 );
 
