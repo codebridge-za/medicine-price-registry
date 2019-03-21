@@ -1,4 +1,5 @@
 import React from 'react';
+import t from 'prop-types';
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
@@ -24,14 +25,33 @@ const Markup = (props) => {
     results,
     submitForm,
     changeHandler,
+    fetchGenerics,
   } = props;
 
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
-      <MedicineBasicSearch results={results} />
+      <MedicineBasicSearch {...{ fetchGenerics, results }} />
     </React.Fragment>
   );
 };
 
 export default Markup;
+
+Markup.propTypes = {
+  content: t.string,
+  results: t.arrayOf(t.shape({
+    dosage_form: t.string,
+    name: t.string,
+    sep: t.string,
+    nappi_code: t.string,
+  })),
+  submitForm: t.func.isRequired,
+  changeHandler: t.func.isRequired,
+  fetchGenerics: t.func.isRequired,
+};
+
+Markup.defaultProps = {
+  content: null,
+  results: [],
+};
