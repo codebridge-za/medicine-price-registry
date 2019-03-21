@@ -28,43 +28,56 @@ const callListOfProducts = (details) => {
     num_packs: numPacks,
     is_generic: isGeneric,
   } = details;
+  
+  const detailsArray = [
+    {
+      key: 'Max price (incl VAT and fees)',
+      value: price,
+    },
+    {
+      key: 'Cost per unit',
+      value: `${costPerUnit}/${dosageForm}`,
+    },
+    {
+      key: 'Dispensing Fee',
+      value: dispensingFee,
+    },
+    {
+      key: 'Schedule',
+      value: schedule,
+    },
+    {
+      key: 'Dosage Form',
+      value: dosageForm,
+    },
+    {
+      key: 'Tablets/ml/Doses',
+      value: packSize,
+    },
+    {
+      key: 'Number of packs',
+      value: numPacks,
+    },
+    { 
+      key: 'Generic/Innovator',
+      value: isGeneric,
+    },
+  ]
+  
+  const createListItem = ({ key, value }) => (
+      <li className={classes.list}>
+        <div className={classes.detailKey}>{key}:</div>
+        <div>{value}</div>
+      </li>
+  );
+  
   return (
     <ul className={classes.listsContainer}>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Max price (incl VAT and fees):</div>
-        <div>{price}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Cost per unit:</div>
-        <div>{costPerUnit}/{dosageForm}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Dispensing Fee:</div>
-        <div>{dispensingFee}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Schedule:</div>
-        <div>{schedule}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Dosage Form:</div>
-        <div>{dosageForm}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Tablets/ml/Doses:</div>
-        <div>{packSize}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Number of packs:</div>
-        <div>{numPacks}</div>
-      </li>
-      <li className={classes.list}>
-        <div className={classes.detailKey}>Generic/Innovator:</div>
-        <div>{isGeneric}</div>
-      </li>
+      {detailsArray.map(createListItem)}
     </ul>
   );
 };
+
 
 const callProductDetails = details => (
   <div className={classes.details}>
@@ -76,9 +89,7 @@ const callProductDetails = details => (
 );
 
 const DetailsPanel = ({ details }) => {
-  const {
-    regno,
-  } = details;
+  const { regno } = details;
 
   return (
     <div className={classes.container}>
