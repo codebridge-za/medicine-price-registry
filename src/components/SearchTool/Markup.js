@@ -39,7 +39,11 @@ const Markup = (props) => {
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
       {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, fetchDetails }} results={results} details={details} />
+      <MedicineBasicSearch
+        {...{ fetchGenerics, fetchDetails }}
+        results={results}
+        details={details}
+      />
     </React.Fragment>
   );
 };

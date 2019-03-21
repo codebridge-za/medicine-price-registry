@@ -1,21 +1,29 @@
 import React from 'react';
+import t from 'prop-types';
 import classes from './style.module.css';
 
-const callListOfIngredients = ({ name, strength, unit }) => (
-  <li key={name} className={classes.ingredientList}>
-    <div className={classes.detailKey}>{name}</div>
-    <div>{strength + unit}</div>
-  </li>
-);
+const callListOfIngredients = (ingredients) => {
+  const { name, strength, unit } = ingredients;
+  return (
+    <li key={name} className={classes.ingredientList}>
+      <div className={classes.detailKey}>{name}</div>
+      <div>{strength + unit}</div>
+    </li>
+  );
+};
 
-const callIngredients = ({ ingredients, regno }) => (
-  <div key={regno} className={classes.details}>
-    <div className={classes.title}>Ingredients</div>
-    <ul className={classes.listsContainer}>
-      {ingredients.map(callListOfIngredients)}
-    </ul>
-  </div>
-);
+const callIngredients = (details) => {
+  const { ingredients, regno } = details;
+
+  return (
+    <div key={regno} className={classes.details}>
+      <div className={classes.title}>Ingredients</div>
+      <ul className={classes.listsContainer}>
+        {ingredients.map(callListOfIngredients)}
+      </ul>
+    </div>
+  );
+};
 
 const callListOfProducts = (details) => {
   const {
@@ -95,3 +103,23 @@ const DetailsPanel = ({ details }) => {
 
 
 export default DetailsPanel;
+
+
+DetailsPanel.propTypes = {
+  details: t.shape({
+    regno: t.string,
+    sep: t.string,
+    cost_per_unit: t.string,
+    dosage_form: t.string,
+    dispensing_fee: t.string,
+    schedule: t.string,
+    pack_size: t.number,
+    num_packs: t.number,
+    is_generic: t.string,
+    ingredients: t.arrayOf(t.shape({
+      name: t.string,
+      strength: t.number,
+      unit: t.string,
+    })),
+  }).isRequired,
+};

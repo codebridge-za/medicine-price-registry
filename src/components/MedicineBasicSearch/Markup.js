@@ -57,7 +57,7 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
     sep: price,
     nappi_code: nappiCode,
   } = props;
-  
+
   return (
     <div key={nappiCode}>
       <div className={classes.container}>
@@ -72,11 +72,20 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
   );
 };
 
-const Markup = ({ results, details, fetchGenerics, fetchDetails }) => (
-  <React.Fragment>
-    {results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))}
-  </React.Fragment>
-);
+const Markup = (props) => {
+  const {
+    results,
+    details,
+    fetchGenerics,
+    fetchDetails,
+  } = props;
+
+  return (
+    <React.Fragment>
+      {results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))}
+    </React.Fragment>
+  );
+};
 
 export default Markup;
 
@@ -87,8 +96,22 @@ Markup.propTypes = {
     sep: t.string,
     nappi_code: t.string,
   })).isRequired,
-};
-
-Markup.defaultProps = {
-  results: [],
+  details: t.shape({
+    regno: t.string,
+    sep: t.string,
+    cost_per_unit: t.string,
+    dosage_form: t.string,
+    dispensing_fee: t.string,
+    schedule: t.string,
+    pack_size: t.number,
+    num_packs: t.number,
+    is_generic: t.string,
+    ingredients: t.arrayOf(t.shape({
+      name: t.string,
+      strength: t.number,
+      unit: t.string,
+    })),
+  }).isRequired,
+  fetchGenerics: t.func.isRequired,
+  fetchDetails: t.func.isRequired,
 };
