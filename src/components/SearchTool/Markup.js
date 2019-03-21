@@ -31,7 +31,7 @@ const Markup = (props) => {
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
-      <MedicineBasicSearch {...{ fetchGenerics }} results={results} />
+      <MedicineBasicSearch {...{ fetchGenerics, results }} />
     </React.Fragment>
   );
 };
@@ -52,6 +52,6 @@ Markup.propTypes = {
 };
 
 Markup.defaultProps = {
-  content: '',
+  content: null,
   results: [],
 };
