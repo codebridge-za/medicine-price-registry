@@ -25,27 +25,18 @@ Downloading a dump of the entire database https://mpr.code4sa.org/api/v2/dump
 
 Get the last updated date https://mpr.code4sa.org/api/v2/last-updated
 
-
 ## Contributor instructions:
 
 ### 🌱 1. Set up local environment
 1. Clone the repository by running `git clone git@github.com:codebridge-za/medicine-price-registry.git`.
 2. Make sure you have the latest release of [NodeJS](https://nodejs.org/en/) installed.
-3. Make sure you have the latest release of [npm](https://www.npmjs.com/get-npm) installed.
-4. Run `npm install` in the root folder of the repository to install all dependancies.
+3. Run `npm install` in the root folder of the repository to install all dependancies.
 
-#### Standard React Environment (Gatsby)
-
-This project is using Gatsby.js. You can run the following scripts in root folder:
-
-- `npm start`: This will open the project on your [localhost:8000](http://localhost:8000/)
-- `npm build`: Builds the production JavaScript file that needs to be added to the existing Medicine Price Registry stack.
-
-### 👓 2. Read our style convention
+### ❤️ 2. Contribute
 1. Please review the [branches](https://github.com/agis/git-style-guide) and [commits](https://github.com/agis/git-style-guide) sections in the following [documentation](https://github.com/agis/git-style-guide).
-
-### ❤️ 3. Contribute
-1. Create a new branch before adding a new feature (skip this step if you are contributing on a specific branch)
+2. Create a new branch before adding a new feature (skip this step if you are contributing on a specific branch)
+3. This project is using Gatsby.js. You can run `npm start` in the root folder
+4. This will open a local version of the project at [localhost:8000](http://localhost:8000/)
 
 ### 🚀 3. Make a pull request
 1. If you are making a public pull request (i.e. you do not have write access) use the [forking Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow).
@@ -58,17 +49,12 @@ This project is using Gatsby.js. You can run the following scripts in root folde
 ## Note
 - This project is currently making use of **CSS Modules** for styling purposes temporarily.
 - When adding to the project, please follow the folder and file structure already in place.
-- A component has been placed into a new folder containing and `index.js` file.
-- This project is following the *eslint-config-airbnb* style guide.
+- This project is following the *eslint-config-airbnb* styleguide.
 
 ## TODO
-- Change style convention to make use of **Styled Components** as well as **Material UI** components.
-- Add CSS spinner before each ajax call.
-- Redesign and submit new feature ideas.
-- Create a script that downloads the latest database instead of shipping a sqlite db with the repo.
-- It might be useful to compare prices over time.
-- Seems like there are some spelling errors in the database - e.g. paracetamol and paracetemol. Might need to clean the database through some sort of fuzzy match and possibly report those errors back to mpr
-
-## CONTRIBUTORS
-- Schalk Venter - ** What's your email address??**
-- Zeeshaan Maudarbocus - maudarbocus.zeeshaan@gmail.com
+- [] Change style convention to make use of **Styled Components** as well as **Material UI** components.
+- [] Add CSS spinner before each ajax call.
+- [] Redesign and submit new feature ideas.
+- [] Create a script that downloads the latest database instead of shipping a sqlite db with the repo.
+- [] It might be useful to compare prices over time.
+- [] Seems like there are some spelling errors in the database - e.g. paracetamol and paracetemol. Might need to clean the database through some sort of fuzzy match and possibly report those errors back to mpr
