@@ -4,6 +4,10 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
 
+const callMatchingProducts = results => (
+  <div>Matching products and/or ingredients: {results.length}</div>
+);
+
 const callForm = (submitForm, content, changeHandler) => (
   <form className={classes.form} onSubmit={submitForm}>
     <label htmlFor="medicine">
@@ -31,6 +35,7 @@ const Markup = (props) => {
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
+      {results.length > 0 && callMatchingProducts(results)}
       <MedicineBasicSearch {...{ fetchGenerics, results }} />
     </React.Fragment>
   );
@@ -46,12 +51,17 @@ Markup.propTypes = {
     sep: t.string,
     nappi_code: t.string,
   })),
+  details: t.arrayOf(t.shape({
+  })),
+
   submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
+  fetchDetails: t.func.isRequired,
 };
 
 Markup.defaultProps = {
   content: null,
   results: [],
+  details: [],
 };

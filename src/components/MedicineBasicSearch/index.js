@@ -1,81 +1,33 @@
-import React from 'react';
-import t from 'prop-types';
+import React, { Component } from 'react';
+import Markup from './Markup';
 
-import tablet from '../../../static/images/pill_24.png';
-import capsule from '../../../static/images/capsule_24.png';
-import syrup from '../../../static/images/syrup_24.png';
-import classes from './style.module.css';
 
-const callIcon = (dosageForm) => {
-  switch (dosageForm) {
-    case ('suspension'): return syrup;
-    case ('effervescent tablet'): return tablet;
-    case ('tablet'): return tablet;
-    case ('capsule'): return capsule;
-    default: return tablet;
+class MedicineBasicSearch extends Component {
+  state = {
+    details: [],
   }
-};
 
-const callImage = (dosageForm) => {
-  const medIcon = callIcon(dosageForm);
-  return (
-    <div className={classes.imageContainerLeft}>
-      <img className={classes.medIcon} src={medIcon} alt={dosageForm} />
-    </div>
-  );
-};
+  fetchDetails = (id) => {
+    fetch(`https://mpr.code4sa.org/api/v2/detail?nappi=${id}`)
+      .then(response => response.json())
+      .then(parsedJSON => (
+        this.setState({ details: parsedJSON })
+      ));
+  };
 
-const callName = name => (
-  <div className={classes.name}>{name}</div>
-);
+  render() {
+    const { state, props } = this;
 
-const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
-  <div className={classes.farRightContainer}>
-    <div className={classes.price}>{price}</div>
-    <button
-      className={classes.generics}
-      onClick={() => fetchGenerics(nappiCode)}
-      type="button"
-    >
-      Find Generics
-    </button>
-  </div>
-);
+    const passedProps = {
+      ...props,
+      details: state.details,
+      showDetails: state.showDetails,
+      fetchDetails: this.fetchDetails,
+    };
 
-const createMedicinePanel = fetchGenerics => (props) => {
-  const {
-    dosage_form: dosageForm,
-    name,
-    sep: price,
-    nappi_code: nappiCode,
-  } = props;
+    return <Markup {...passedProps} />;
+  }
+}
 
-  return (
-    <div className={classes.container} key={nappiCode}>
-      {callImage(dosageForm)}
-      <div className={classes.descriptionContainerRight}>
-        {callName(name)}
-        {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
-      </div>
-    </div>
-  );
-};
-
-const MedicineBasicSearch = ({ results, fetchGenerics }) => (
-  results.map(createMedicinePanel(fetchGenerics))
-);
 
 export default MedicineBasicSearch;
-
-MedicineBasicSearch.propTypes = {
-  results: t.arrayOf(t.shape({
-    dosage_form: t.string,
-    name: t.string,
-    sep: t.string,
-    nappi_code: t.string,
-  })).isRequired,
-};
-
-MedicineBasicSearch.defaultProps = {
-  results: [],
-};
