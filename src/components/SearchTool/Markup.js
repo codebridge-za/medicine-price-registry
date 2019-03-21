@@ -4,6 +4,10 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import classes from './style.module.css';
 
+const callMatchingProducts = results => (
+  <div>Matching products and/or ingredients: {results.length}</div>
+);
+
 const callForm = (submitForm, content, changeHandler) => (
 
   <form className={classes.form} onSubmit={submitForm}>
@@ -34,6 +38,7 @@ const Markup = (props) => {
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
+      {results.length > 0 && callMatchingProducts(results)}
       <MedicineBasicSearch {...{ fetchGenerics, fetchDetails }} results={results} details={details} />
     </React.Fragment>
   );

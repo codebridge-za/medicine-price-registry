@@ -2,14 +2,14 @@ import React from 'react';
 import classes from './style.module.css';
 
 const callListOfIngredients = ({ name, strength, unit }) => (
-  <li className={classes.ingredientList}>
+  <li key={name} className={classes.ingredientList}>
     <div className={classes.detailKey}>{name}</div>
     <div>{strength + unit}</div>
   </li>
 );
 
-const callIngredients = ({ ingredients }) => (
-  <div className={classes.details}>
+const callIngredients = ({ ingredients, regno }) => (
+  <div key={regno} className={classes.details}>
     <div className={classes.title}>Ingredients</div>
     <ul className={classes.listsContainer}>
       {ingredients.map(callListOfIngredients)}
@@ -77,12 +77,11 @@ const callProductDetails = details => (
 
 const DetailsPanel = ({ details }) => {
   const {
-    nappi_code: nappiCode,
     regno,
   } = details;
 
   return (
-    <div key={nappiCode + regno} className={classes.container}>
+    <div className={classes.container}>
       <div className={classes.detailsContainer}>
         {callProductDetails(details)}
         {callIngredients(details)}

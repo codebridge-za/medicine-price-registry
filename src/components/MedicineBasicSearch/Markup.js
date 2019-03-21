@@ -59,8 +59,8 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
   } = props;
   
   return (
-    <div>
-      <div className={classes.container} key={nappiCode}>
+    <div key={nappiCode}>
+      <div className={classes.container}>
         {callImage(dosageForm)}
         <div className={classes.descriptionContainerRight}>
           {callName(name, nappiCode, fetchDetails)}
@@ -73,7 +73,9 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
 };
 
 const Markup = ({ results, details, fetchGenerics, fetchDetails }) => (
-  results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))
+  <React.Fragment>
+    {results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))}
+  </React.Fragment>
 );
 
 export default Markup;
