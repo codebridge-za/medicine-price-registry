@@ -1,3 +1,7 @@
+.container {
+  margin-bottom: 10px;
+}
+
 .detailsContainer {
   display: flex;
   border: 1px solid #d6d6d6;
