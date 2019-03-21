@@ -5,7 +5,7 @@ import Markup from './Markup';
 
 class SearchTool extends Component {
   state = {
-    content: '',
+    content: null,
     results: [],
   }
 
@@ -20,7 +20,7 @@ class SearchTool extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
-    this.setState({ content: '' });
+    this.setState({ content: null });
   }
 
   changeHandler = (event) => {
