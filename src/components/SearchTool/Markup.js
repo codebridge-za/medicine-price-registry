@@ -57,10 +57,8 @@ Markup.propTypes = {
     name: t.string,
     sep: t.string,
     nappi_code: t.string,
-  })),
-  details: t.arrayOf(t.shape({
-  })),
-
+  })).isRequired,
+  details: t.arrayOf(null).isRequired,
   submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
@@ -69,6 +67,4 @@ Markup.propTypes = {
 
 Markup.defaultProps = {
   content: '',
-  results: [],
-  details: [],
 };
