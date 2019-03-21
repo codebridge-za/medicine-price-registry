@@ -4,7 +4,6 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 import classes from './style.module.css';
 
 const callForm = (submitForm, content, changeHandler) => (
-
   <form className={classes.form} onSubmit={submitForm}>
     <label htmlFor="medicine">
       <span>Search for a medicine:</span>
