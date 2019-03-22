@@ -14,3 +14,9 @@ input {
 input:focus {
   border: 1px solid #beeef7;
 }
+
+.loaderContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
