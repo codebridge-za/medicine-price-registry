@@ -1,9 +1,11 @@
 import React from 'react';
 import t from 'prop-types';
-import MedicineBasicSearch from '../MedicineBasicSearch';
-import TextField from '@material-ui/core/TextField';
 
-import classes from './style.module.css';
+import MedicineBasicSearch from '../MedicineBasicSearch';
+
+import { SearchWrapper, InputBaseStyled } from './styled';
+
+// import classes from './style.module.css';
 
 const callMatchingProducts = results => (
   <div>Matching products and/or ingredients: {results.length}</div>
@@ -23,13 +25,26 @@ const callForm = (submitForm, content, changeHandler) => (
         />
       </label>
     </form> */}
-    <TextField
+    {/* <TextField
       label="e.g. salbutamol or asthavent"
       type="search"
       variant="outlined"
       value={content}
       onChange={changeHandler}
-    />
+    /> */}
+
+    <span>Search for a medicine:</span>
+    <SearchWrapper>
+      <InputBaseStyled
+        placeholder="e.g. salbutamol or asthavent"
+        onChange={changeHandler}
+        value={content}
+        classes={{
+          root: 'inputRoot',
+          input: 'inputInput',
+        }}
+      />
+    </SearchWrapper>
   </React.Fragment>
 );
 
@@ -37,18 +52,16 @@ const Markup = (props) => {
   const {
     content,
     results,
-    details,
     submitForm,
     changeHandler,
     fetchGenerics,
-    fetchDetails,
   } = props;
 
   return (
     <React.Fragment>
       {callForm(submitForm, content, changeHandler)}
       {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, fetchDetails }} results={results} details={details} />
+      <MedicineBasicSearch {...{ fetchGenerics, results }} />
     </React.Fragment>
   );
 };
@@ -73,7 +86,7 @@ Markup.propTypes = {
 };
 
 Markup.defaultProps = {
-  content: '',
+  content: null,
   results: [],
   details: [],
 };

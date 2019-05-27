@@ -5,18 +5,9 @@ import Markup from './Markup';
 
 class SearchTool extends Component {
   state = {
-    content: '',
+    content: null,
     results: [],
-    details: [],
   }
-
-  fetchDetails = (id) => {
-    fetch(`https://mpr.code4sa.org/api/v2/detail?nappi=${id}`)
-      .then(response => response.json())
-      .then(parsedJSON => (
-        this.setState({ details: parsedJSON })
-      ));
-  };
 
   fetchGenerics = (id) => {
     fetch(`https://mpr.code4sa.org/api/v2/related?nappi=${id}`)
@@ -38,16 +29,20 @@ class SearchTool extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
-    this.setState({ content: '' });
+    this.setState({ content: null });
   }
 
   changeHandler = (event) => {
-    this.setState({ content: event.target.value }, () => {
-      const { content } = this.state;
-      if (content && content.length > 3) {
-        this.fetchBasicSearch(content);
-      }
-    });
+    const { fetchBasicSearch } = this;
+    const { value: content } = event.target;
+
+    this.setState({ content });
+    
+    if (!content || content.length < 4) {
+      return null;
+    }
+    
+    return fetchBasicSearch(content);
   }
 
   render() {
@@ -56,11 +51,9 @@ class SearchTool extends Component {
     const passedProps = {
       content: state.content,
       results: state.results,
-      details: state.details,
       changeHandler: this.changeHandler,
       submitForm: this.submitForm,
       fetchGenerics: this.fetchGenerics,
-      fetchDetails: this.fetchDetails,
     };
 
     return <Markup {...passedProps} />;
