@@ -39,11 +39,10 @@ Get the last updated date https://mpr.code4sa.org/api/v2/last-updated
 4. This will open a local version of the project at [localhost:8000](http://localhost:8000/)
 
 ### 🚀 3. Make a pull request
-1. If you are making a public pull request (i.e. you do not have write access) use the [forking Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow).
-2. If you are a project contributor (.e. you have write access) use the [feature branch Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
-3. Make a [pull request](https://www.atlassian.com/git/tutorials/making-a-pull-request) via the [Github](#github) dashboard to the `develop` branch.
-4. The designated owner of the repository will automatically be tagged in all pull requests via the `docs/CODEOWNERS` file.
-5. Once your code has been accepted and merged into `master` [Netlify](#netlify) will automatically deploy the changes to [mpr.netlify.com/](https://mpr.netlify.com/).
+1. If you are a project contributor (.e. you have write access) use the [feature branch Git workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+2. Make a [pull request](https://www.atlassian.com/git/tutorials/making-a-pull-request) via the [Github](#github) dashboard to the `develop` branch.
+3. The designated owner of the repository will automatically be tagged in all pull requests via the `docs/CODEOWNERS` file.
+4. Once your code has been accepted and merged into `master` [Netlify](#netlify) will automatically deploy the changes to [mpr.netlify.com/](https://mpr.netlify.com/).
 
 
 ## Note

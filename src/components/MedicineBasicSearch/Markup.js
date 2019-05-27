@@ -57,7 +57,7 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) =>
     sep: price,
     nappi_code: nappiCode,
   } = props;
-  
+
   return (
     <div key={nappiCode}>
       <div className={classes.container}>
