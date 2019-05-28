@@ -2,7 +2,7 @@ import React from 'react';
 import t from 'prop-types';
 
 import { CardContent, CardActions, Collapse } from '@material-ui/core';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import DetailsPanel from '../DetailsPanel';
 
@@ -11,9 +11,12 @@ import capsule from '../../../static/images/capsule_24.png';
 import syrup from '../../../static/images/syrup_24.png';
 
 import {
+  ImageContainerLeft,
+  MedIcon,
   CardStyled,
   Title,
-  // IconButtonStyled,
+  FarRightContainer,
+  IconButtonStyled,
   Price,
   ButtonStyled,
 } from './styled';
@@ -33,9 +36,9 @@ const callIcon = (dosageForm) => {
 const callImage = (dosageForm) => {
   const medIcon = callIcon(dosageForm);
   return (
-    <div className={classes.imageContainerLeft}>
-      <img className={classes.medIcon} src={medIcon} alt={dosageForm} />
-    </div>
+    <ImageContainerLeft>
+      <MedIcon src={medIcon} alt={dosageForm} />
+    </ImageContainerLeft>
   );
 };
 
@@ -43,28 +46,17 @@ const callImage = (dosageForm) => {
 const callName = (name, nappiCode, fetchDetails) => (
   <React.Fragment>
     <Title
-      variant="body2"
-      color="textSecondary"
       component="div"
       onClick={() => fetchDetails(nappiCode)}
     >
       {name}
     </Title>
-
-    {/* <button
-      className={classes.name}
-      onClick={() => fetchDetails(nappiCode)}
-      type="button"
-    >
-      {name}
-    </button> */}
   </React.Fragment>
 );
 
 const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
-  <div className={classes.farRightContainer}>
+  <FarRightContainer>
     <Price component="div">{price}</Price>
-    {/* <div className={classes.price}>{price}</div> */}
     <CardActions>
       <ButtonStyled
         size="small"
@@ -74,14 +66,7 @@ const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
         Find Generics
       </ButtonStyled>
     </CardActions>
-    {/* <button
-      className={classes.generics}
-      onClick={() => fetchGenerics(nappiCode)}
-      type="button"
-    >
-      Find Generics
-    </button> */}
-  </div>
+  </FarRightContainer>
 );
 
 const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => (props) => {
@@ -94,28 +79,25 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => 
   
   return (
     <React.Fragment>
-
-
-
       <CardStyled key={nappiCode}>
         <CardContent>
-        <div className={classes.container}>
-          {callImage(dosageForm)}
-          <div className={classes.descriptionContainerRight}>
-            {callName(name, nappiCode, fetchDetails)}
-            {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
+          <div className={classes.container}>
+            {callImage(dosageForm)}
+            <div className={classes.descriptionContainerRight}>
+              {callName(name, nappiCode, fetchDetails)}
+              {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
+            </div>
           </div>
-        </div>
         </CardContent>
-        {/* <CardActions disableSpacing>
+        <CardActions disableSpacing>
           <IconButtonStyled
-            onClick={handleExpandClick}
+            onClick={() => fetchDetails(nappiCode)}
             aria-expanded={expanded}
             aria-label="Show more"
           >
             <ExpandMoreIcon />
           </IconButtonStyled>
-        </CardActions> */}
+        </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <div>
