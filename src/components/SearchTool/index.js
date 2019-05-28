@@ -5,7 +5,7 @@ import Markup from './Markup';
 
 class SearchTool extends Component {
   state = {
-    content: null,
+    content: '',
     results: [],
   }
 
