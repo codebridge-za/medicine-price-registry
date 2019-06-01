@@ -13,26 +13,6 @@ const callMatchingProducts = results => (
 
 const callForm = (submitForm, content, changeHandler) => (
   <React.Fragment>
-    {/* <form className={classes.form} onSubmit={submitForm}>
-      <label htmlFor="medicine">
-        <span>Search for a medicine:</span>
-        <input
-          id="medicine"
-          type="text"
-          placeholder="e.g. salbutamol or asthavent"
-          value={content}
-          onChange={changeHandler}
-        />
-      </label>
-    </form> */}
-    {/* <TextField
-      label="e.g. salbutamol or asthavent"
-      type="search"
-      variant="outlined"
-      value={content}
-      onChange={changeHandler}
-    /> */}
-
     <span>Search for a medicine:</span>
     <SearchWrapper>
       <InputBaseStyled
