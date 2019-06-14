@@ -5,8 +5,6 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import { SearchWrapper, InputBaseStyled } from './styled';
 
-// import classes from './style.module.css';
-
 const callMatchingProducts = results => (
   <div>Matching products and/or ingredients: {results.length}</div>
 );
