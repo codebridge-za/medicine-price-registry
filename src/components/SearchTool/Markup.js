@@ -1,26 +1,29 @@
 import React from 'react';
 import t from 'prop-types';
+
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
-import classes from './style.module.css';
+import { SearchWrapper, InputBaseStyled } from './styled';
 
 const callMatchingProducts = results => (
   <div>Matching products and/or ingredients: {results.length}</div>
 );
 
 const callForm = (submitForm, content, changeHandler) => (
-  <form className={classes.form} onSubmit={submitForm}>
-    <label htmlFor="medicine">
-      <span>Search for a medicine:</span>
-      <input
-        id="medicine"
-        type="text"
+  <React.Fragment>
+    <span>Search for a medicine:</span>
+    <SearchWrapper>
+      <InputBaseStyled
         placeholder="e.g. salbutamol or asthavent"
-        value={content || ''}
         onChange={changeHandler}
+        value={content}
+        classes={{
+          root: 'inputRoot',
+          input: 'inputInput',
+        }}
       />
-    </label>
-  </form>
+    </SearchWrapper>
+  </React.Fragment>
 );
 
 const Markup = (props) => {
@@ -57,7 +60,6 @@ Markup.propTypes = {
   submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
-  fetchDetails: t.func.isRequired,
 };
 
 Markup.defaultProps = {

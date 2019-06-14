@@ -5,7 +5,7 @@ import Markup from './Markup';
 
 class SearchTool extends Component {
   state = {
-    content: null,
+    content: '',
     results: [],
   }
 
@@ -37,11 +37,11 @@ class SearchTool extends Component {
     const { value: content } = event.target;
 
     this.setState({ content });
-    
+
     if (!content || content.length < 4) {
       return null;
     }
-    
+
     return fetchBasicSearch(content);
   }
 

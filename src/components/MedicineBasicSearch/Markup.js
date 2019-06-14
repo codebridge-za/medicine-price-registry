@@ -1,11 +1,30 @@
 import React from 'react';
 import t from 'prop-types';
+
+import { CardContent, CardActions, Collapse } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 import DetailsPanel from '../DetailsPanel';
 
 import tablet from '../../../static/images/pill_24.png';
 import capsule from '../../../static/images/capsule_24.png';
 import syrup from '../../../static/images/syrup_24.png';
-import classes from './style.module.css';
+
+import {
+  Container,
+  CardContentStyled,
+  CardActionsStyled,
+  ImageContainerLeft,
+  MedIcon,
+  CardStyled,
+  Title,
+  FarRightContainer,
+  IconButtonStyled,
+  Price,
+  ButtonStyled,
+  DescriptionContainerRight,
+  ImageAndNameLeft,
+} from './styled';
 
 const callIcon = (dosageForm) => {
   switch (dosageForm) {
@@ -20,63 +39,90 @@ const callIcon = (dosageForm) => {
 const callImage = (dosageForm) => {
   const medIcon = callIcon(dosageForm);
   return (
-    <div className={classes.imageContainerLeft}>
-      <img className={classes.medIcon} src={medIcon} alt={dosageForm} />
-    </div>
+    <ImageContainerLeft>
+      <MedIcon src={medIcon} alt={dosageForm} />
+    </ImageContainerLeft>
   );
 };
 
 
 const callName = (name, nappiCode, fetchDetails) => (
-  <button
-    className={classes.name}
+  <Title
+    component="div"
     onClick={() => fetchDetails(nappiCode)}
-    type="button"
   >
     {name}
-  </button>
+  </Title>
 );
 
 const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
-  <div className={classes.farRightContainer}>
-    <div className={classes.price}>{price}</div>
-    <button
-      className={classes.generics}
-      onClick={() => fetchGenerics(nappiCode)}
-      type="button"
-    >
-      Find Generics
-    </button>
-  </div>
+  <FarRightContainer>
+    <Price component="div">{price}</Price>
+    <CardActions>
+      <ButtonStyled
+        size="small"
+        color="primary"
+        onClick={() => fetchGenerics(nappiCode)}
+      >
+        Find Generics
+      </ButtonStyled>
+    </CardActions>
+  </FarRightContainer>
 );
 
-const createMedicinePanel = (fetchGenerics, details, fetchDetails) => (props) => {
+const callCollapsibleIcon = (expanded, fetchDetails, nappiCode) => (
+  <CardActionsStyled>
+    <IconButtonStyled
+      {...{ expanded }}
+      onClick={() => fetchDetails(nappiCode)}
+      aria-expanded={expanded}
+      aria-label="Show more"
+    >
+      <ExpandMoreIcon />
+    </IconButtonStyled>
+  </CardActionsStyled>
+);
+
+const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => (props) => {
   const {
     dosage_form: dosageForm,
     name,
     sep: price,
     nappi_code: nappiCode,
   } = props;
-  
+
   return (
-    <div key={nappiCode}>
-      <div className={classes.container}>
-        {callImage(dosageForm)}
-        <div className={classes.descriptionContainerRight}>
-          {callName(name, nappiCode, fetchDetails)}
-          {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
-        </div>
-      </div>
-      {nappiCode === details.nappi_code && <DetailsPanel details={details} />}
-    </div>
+    <CardStyled key={nappiCode}>
+      <CardContentStyled>
+        <Container>
+          <ImageAndNameLeft>
+            {callImage(dosageForm)}
+            {callName(name, nappiCode, fetchDetails)}
+          </ImageAndNameLeft>
+          <DescriptionContainerRight>
+            {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
+            {callCollapsibleIcon(expanded, fetchDetails, nappiCode)}
+          </DescriptionContainerRight>
+        </Container>
+      </CardContentStyled>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <div>
+            {nappiCode === details.nappi_code && <DetailsPanel details={details} />}
+          </div>
+        </CardContent>
+      </Collapse>
+    </CardStyled>
   );
 };
 
-const Markup = ({ results, details, fetchGenerics, fetchDetails }) => (
-  <React.Fragment>
-    {results.map(createMedicinePanel(fetchGenerics, details, fetchDetails))}
-  </React.Fragment>
-);
+const Markup = ({
+  results,
+  details,
+  fetchGenerics,
+  fetchDetails,
+  expanded,
+}) => results.map(createMedicinePanel(fetchGenerics, details, fetchDetails, expanded));
 
 export default Markup;
 

@@ -1,20 +1,31 @@
 import React from 'react';
-import classes from './style.module.css';
+
+import {
+  Container,
+  DetailsContainer,
+  Registration,
+  Details,
+  Title,
+  ListsContainer,
+  List,
+  DetailKey,
+  IngredientList,
+} from './styled';
 
 const callListOfIngredients = ({ name, strength, unit }) => (
-  <li key={name} className={classes.ingredientList}>
-    <div className={classes.detailKey}>{name}</div>
+  <IngredientList key={name}>
+    <DetailKey>{name}</DetailKey>
     <div>{strength + unit}</div>
-  </li>
+  </IngredientList>
 );
 
 const callIngredients = ({ ingredients, regno }) => (
-  <div key={regno} className={classes.details}>
-    <div className={classes.title}>Ingredients</div>
-    <ul className={classes.listsContainer}>
+  <Details key={regno}>
+    <Title>Ingredients</Title>
+    <ListsContainer>
       {ingredients.map(callListOfIngredients)}
-    </ul>
-  </div>
+    </ListsContainer>
+  </Details>
 );
 
 const callListOfProducts = (details) => {
@@ -65,42 +76,42 @@ const callListOfProducts = (details) => {
   ];
 
   const createListItem = ({ key, value }) => (
-    <li className={classes.list}>
-      <div className={classes.detailKey}>{key}:</div>
+    <List key={key}>
+      <DetailKey>{key}:</DetailKey>
       <div>{value}</div>
-    </li>
+    </List>
   );
 
   return (
-    <ul className={classes.listsContainer}>
+    <ListsContainer>
       {detailsArray.map(createListItem)}
-    </ul>
+    </ListsContainer>
   );
 };
 
 
 const callProductDetails = details => (
-  <div className={classes.details}>
-    <div className={classes.title}>Product details</div>
-    <ul className={classes.listsContainer}>
+  <Details>
+    <Title>Product details</Title>
+    <ListsContainer>
       {callListOfProducts(details)}
-    </ul>
-  </div>
+    </ListsContainer>
+  </Details>
 );
 
 const DetailsPanel = ({ details }) => {
   const { regno } = details;
 
   return (
-    <div className={classes.container}>
-      <div className={classes.detailsContainer}>
+    <Container>
+      <DetailsContainer>
         {callProductDetails(details)}
         {callIngredients(details)}
-      </div>
-      <div className={classes.registration}>
+      </DetailsContainer>
+      <Registration>
         <p>Registration number: {regno}</p>
-      </div>
-    </div>
+      </Registration>
+    </Container>
   );
 };
 
