@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import removeProps from '../../helpers/removeProps';
 
 import {
   Card,
@@ -83,7 +84,7 @@ const ButtonStyled = styled(Button)`
   text-transform: none;
 `;
 
-const IconButtonStyled = styled(IconButton)`
+const IconButtonStyled = styled(removeProps({ component: IconButton, blacklist: 'expanded' }))`
   && {
     transform: ${({ expanded }) => (expanded ? 'rotate(180deg)' : 'rotate(0deg)')};
     color: ${({ expanded }) => (expanded ? 'red' : 'blue')};

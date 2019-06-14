@@ -62,7 +62,6 @@ Markup.propTypes = {
   submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
-  fetchDetails: t.func.isRequired,
 };
 
 Markup.defaultProps = {
