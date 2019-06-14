@@ -13,7 +13,7 @@ const SearchWrapper = styled.div`
 
   &:hover {
     background: #fff;
-    border: 1px solid #beeef7;
+    border: 1px solid #beeef7;   
   }
 `;
 

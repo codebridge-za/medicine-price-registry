@@ -76,7 +76,7 @@ const callListOfProducts = (details) => {
   ];
 
   const createListItem = ({ key, value }) => (
-    <List>
+    <List key={key}>
       <DetailKey>{key}:</DetailKey>
       <div>{value}</div>
     </List>

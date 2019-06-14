@@ -1,12 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import classes from './style.module.css';
+import {
+  ListItem,
+} from '@material-ui/core';
+
+import {
+  CardStyled,
+  CardContentStyled,
+  Heading,
+  DividerStyled,
+  ContentContainer,
+  Text,
+  List,
+  Link,
+} from './styled';
 
 const createList = listContainer => listContainer.map(({ list }) => (
-  <ul key={list}>
-    <li>{list}</li>
-  </ul>
+  <ListItem key={list}>
+    <List>{list}</List>
+  </ListItem>
 ));
 
 const createLink = additionalInfo => additionalInfo.map(({ link }) => {
@@ -15,23 +28,22 @@ const createLink = additionalInfo => additionalInfo.map(({ link }) => {
   }
 
   return (
-    <a
-      className={classes.link}
+    <Link
       key={link}
       href="https://search.opengazettes.org.za/text/25860?page=31"
       target="_blank"
       rel="noopener noreferrer"
     >
       {link}
-    </a>
+    </Link>
   );
 });
 
 const createAdditionalInfo = additionalInfo => additionalInfo.map(({ info, link }) => (
-  <p key={info}>
+  <Text key={info}>
     {info}
     {link && createLink(additionalInfo)}
-  </p>
+  </Text>
 ));
 
 const createDetails = details => details.map((detailsContent) => {
@@ -44,12 +56,13 @@ const createDetails = details => details.map((detailsContent) => {
 
   return (
     <div key={heading}>
-      <h3 className={classes.heading}>{heading}</h3>
-      <div className={classes.content}>
-        <p>{firstParagraph}</p>
+      <Heading>{heading}</Heading>
+      <DividerStyled />
+      <ContentContainer>
+        <Text>{firstParagraph}</Text>
         {createList(listContainer)}
         {additionalInfo && createAdditionalInfo(additionalInfo)}
-      </div>
+      </ContentContainer>
     </div>
   );
 });
@@ -57,11 +70,15 @@ const createDetails = details => details.map((detailsContent) => {
 const GeneralInfo = ({ copy }) => {
   const { details } = copy;
   return (
-    <div className={classes.container}>
-      {createDetails(details)}
-    </div>
+    <CardStyled>
+      <CardContentStyled>
+        {createDetails(details)}
+      </CardContentStyled>
+    </CardStyled>
   );
 };
+
+export default GeneralInfo;
 
 const listsSchema = PropTypes.arrayOf(
   PropTypes.shape({
@@ -88,5 +105,3 @@ GeneralInfo.propTypes = {
     ),
   }).isRequired,
 };
-
-export default GeneralInfo;

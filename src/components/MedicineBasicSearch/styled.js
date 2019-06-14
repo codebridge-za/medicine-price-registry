@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import removeProps from '../../helpers/removeProps';
 
 import {
   Card,
@@ -10,6 +9,8 @@ import {
   Button,
 } from '@material-ui/core';
 
+import removeProps from '../../helpers/removeProps';
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -18,6 +19,7 @@ const Container = styled.div`
 
 const DescriptionContainerRight = styled.div`
   max-width: 300px;
+
    @media screen and (min-width: 600px) {
     display: flex;
     width: stretch;
@@ -56,7 +58,6 @@ const CardActionsStyled = styled(CardActions)`
     padding: 0;
   }
 `;
-
 
 const Title = styled(Typography)`
   && {
