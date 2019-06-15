@@ -27,11 +27,6 @@ class SearchTool extends Component {
       });
   }
 
-  submitForm = (event) => {
-    event.preventDefault();
-    this.setState({ content: null });
-  }
-
   changeHandler = (event) => {
     const { fetchBasicSearch } = this;
     const { value: content } = event.target;
@@ -52,7 +47,6 @@ class SearchTool extends Component {
       content: state.content,
       results: state.results,
       changeHandler: this.changeHandler,
-      submitForm: this.submitForm,
       fetchGenerics: this.fetchGenerics,
     };
 

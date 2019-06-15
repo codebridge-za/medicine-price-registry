@@ -5,11 +5,19 @@ import MedicineBasicSearch from '../MedicineBasicSearch';
 
 import { SearchWrapper, InputBaseStyled } from './styled';
 
-const callMatchingProducts = results => (
-  <div>Matching products and/or ingredients: {results.length}</div>
-);
+const callMatchingProducts = (results, content) => {
+  if (!content || content.length < 4) {
+    return null;
+  }
 
-const callForm = (submitForm, content, changeHandler) => (
+  if (results.length < 1) {
+    return <div>No matching products found.</div>;
+  }
+
+  return <div>Matching products and/or ingredients: {results.length}</div>;
+};
+
+const callForm = (content, changeHandler) => (
   <React.Fragment>
     <span>Search for a medicine:</span>
     <SearchWrapper>
@@ -30,16 +38,15 @@ const Markup = (props) => {
   const {
     content,
     results,
-    submitForm,
     changeHandler,
     fetchGenerics,
   } = props;
 
   return (
     <React.Fragment>
-      {callForm(submitForm, content, changeHandler)}
-      {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, results }} />
+      {callForm(content, changeHandler)}
+      {callMatchingProducts(results, content)}
+      {results.length > 0 && <MedicineBasicSearch {...{ fetchGenerics, results }} />}
     </React.Fragment>
   );
 };
@@ -56,8 +63,6 @@ Markup.propTypes = {
   })),
   details: t.arrayOf(t.shape({
   })),
-
-  submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
 };
