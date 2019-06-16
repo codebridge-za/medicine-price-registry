@@ -1,7 +1,18 @@
 import { InputBase } from '@material-ui/core';
 
+import { Typography } from '@material-ui/core';
+
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  height: 140px;
+`;
+
+const Text = styled(Typography)`
+  && {
+    margin: 10px 0;
+  }
+`;
 
 const SearchWrapper = styled.div`
   position: relative;
@@ -34,9 +45,11 @@ const InputBaseStyled = styled(InputBase)`
   }
 `;
 
-export { SearchWrapper, InputBaseStyled };
+export { Wrapper, Text, SearchWrapper, InputBaseStyled };
 
 export default {
+  Wrapper,
+  Text,
   SearchWrapper,
   InputBaseStyled,
 };

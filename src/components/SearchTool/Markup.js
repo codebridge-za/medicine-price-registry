@@ -3,7 +3,7 @@ import t from 'prop-types';
 
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
-import { SearchWrapper, InputBaseStyled } from './styled';
+import { Wrapper, Text, SearchWrapper, InputBaseStyled } from './styled';
 
 const callMatchingProducts = (results, content) => {
   if (!content || content.length < 4) {
@@ -11,15 +11,15 @@ const callMatchingProducts = (results, content) => {
   }
 
   if (results.length < 1) {
-    return <div>No matching products found.</div>;
+    return <Text>No matching products found.</Text>;
   }
 
-  return <div>Matching products and/or ingredients: {results.length}</div>;
+  return <Text>Matching products and/or ingredients: {results.length}</Text>;
 };
 
-const callForm = (content, changeHandler) => (
-  <React.Fragment>
-    <span>Search for a medicine:</span>
+const callForm = (content, changeHandler, results) => (
+  <Wrapper>
+    <Text>Search for a medicine:</Text>
     <SearchWrapper>
       <InputBaseStyled
         placeholder="e.g. salbutamol or asthavent"
@@ -31,7 +31,8 @@ const callForm = (content, changeHandler) => (
         }}
       />
     </SearchWrapper>
-  </React.Fragment>
+    {callMatchingProducts(results, content)}
+  </Wrapper>
 );
 
 const Markup = (props) => {
@@ -44,8 +45,7 @@ const Markup = (props) => {
 
   return (
     <React.Fragment>
-      {callForm(content, changeHandler)}
-      {callMatchingProducts(results, content)}
+      {callForm(content, changeHandler, results)}
       {results.length > 0 && <MedicineBasicSearch {...{ fetchGenerics, results }} />}
     </React.Fragment>
   );
