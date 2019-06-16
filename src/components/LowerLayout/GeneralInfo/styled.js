@@ -10,7 +10,7 @@ import {
 
 const CardStyled = styled(Card)`
   && {
-    margin: 30px 10px;
+    margin: 0 10px 30px 10px;
   }
 `;
 

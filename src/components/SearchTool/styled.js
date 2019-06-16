@@ -5,7 +5,8 @@ import { Typography } from '@material-ui/core';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  height: 140px;
+  height: 120px;
+  margin-bottom: 20px;
 `;
 
 const Text = styled(Typography)`
