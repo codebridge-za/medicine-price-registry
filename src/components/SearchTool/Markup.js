@@ -1,42 +1,52 @@
 import React from 'react';
 import t from 'prop-types';
+
 import MedicineBasicSearch from '../MedicineBasicSearch';
 
-import classes from './style.module.css';
+import { Wrapper, Text, SearchWrapper, InputBaseStyled } from './styled';
 
-const callMatchingProducts = results => (
-  <div>Matching products and/or ingredients: {results.length}</div>
-);
+const callMatchingProducts = (results, content) => {
+  if (!content || content.length < 4) {
+    return null;
+  }
 
-const callForm = (submitForm, content, changeHandler) => (
-  <form className={classes.form} onSubmit={submitForm}>
-    <label htmlFor="medicine">
-      <span>Search for a medicine:</span>
-      <input
-        id="medicine"
-        type="text"
+  if (results.length < 1) {
+    return <Text>No matching products found.</Text>;
+  }
+
+  return <Text>Matching products and/or ingredients: {results.length}</Text>;
+};
+
+const callForm = (content, changeHandler, results) => (
+  <Wrapper>
+    <Text>Search for a medicine:</Text>
+    <SearchWrapper>
+      <InputBaseStyled
         placeholder="e.g. salbutamol or asthavent"
-        value={content || ''}
         onChange={changeHandler}
+        value={content}
+        classes={{
+          root: 'inputRoot',
+          input: 'inputInput',
+        }}
       />
-    </label>
-  </form>
+    </SearchWrapper>
+    {callMatchingProducts(results, content)}
+  </Wrapper>
 );
 
 const Markup = (props) => {
   const {
     content,
     results,
-    submitForm,
     changeHandler,
     fetchGenerics,
   } = props;
 
   return (
     <React.Fragment>
-      {callForm(submitForm, content, changeHandler)}
-      {results.length > 0 && callMatchingProducts(results)}
-      <MedicineBasicSearch {...{ fetchGenerics, results }} />
+      {callForm(content, changeHandler, results)}
+      {results.length > 0 && <MedicineBasicSearch {...{ fetchGenerics, results }} />}
     </React.Fragment>
   );
 };
@@ -53,11 +63,8 @@ Markup.propTypes = {
   })),
   details: t.arrayOf(t.shape({
   })),
-
-  submitForm: t.func.isRequired,
   changeHandler: t.func.isRequired,
   fetchGenerics: t.func.isRequired,
-  fetchDetails: t.func.isRequired,
 };
 
 Markup.defaultProps = {

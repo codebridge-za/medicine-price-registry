@@ -1,20 +1,33 @@
 import React from 'react';
-import classes from './style.module.css';
+
+import { Divider } from '@material-ui/core';
+
+import {
+  DetailsContainer,
+  Registration,
+  Details,
+  Title,
+  ListsContainer,
+  List,
+  DetailKey,
+  Value,
+  IngredientList,
+} from './styled';
 
 const callListOfIngredients = ({ name, strength, unit }) => (
-  <li key={name} className={classes.ingredientList}>
-    <div className={classes.detailKey}>{name}</div>
-    <div>{strength + unit}</div>
-  </li>
+  <IngredientList key={name}>
+    <DetailKey>{name}</DetailKey>
+    <Value>{strength + unit}</Value>
+  </IngredientList>
 );
 
 const callIngredients = ({ ingredients, regno }) => (
-  <div key={regno} className={classes.details}>
-    <div className={classes.title}>Ingredients</div>
-    <ul className={classes.listsContainer}>
+  <Details key={regno}>
+    <Title>Ingredients</Title>
+    <ListsContainer>
       {ingredients.map(callListOfIngredients)}
-    </ul>
-  </div>
+    </ListsContainer>
+  </Details>
 );
 
 const callListOfProducts = (details) => {
@@ -65,42 +78,41 @@ const callListOfProducts = (details) => {
   ];
 
   const createListItem = ({ key, value }) => (
-    <li className={classes.list}>
-      <div className={classes.detailKey}>{key}:</div>
-      <div>{value}</div>
-    </li>
+    <List key={key}>
+      <DetailKey>{key}:</DetailKey>
+      <Value>{value}</Value>
+    </List>
   );
 
   return (
-    <ul className={classes.listsContainer}>
+    <ListsContainer>
       {detailsArray.map(createListItem)}
-    </ul>
+    </ListsContainer>
   );
 };
 
 
 const callProductDetails = details => (
-  <div className={classes.details}>
-    <div className={classes.title}>Product details</div>
-    <ul className={classes.listsContainer}>
+  <Details>
+    <Title>Product details</Title>
+    <ListsContainer>
       {callListOfProducts(details)}
-    </ul>
-  </div>
+    </ListsContainer>
+  </Details>
 );
 
 const DetailsPanel = ({ details }) => {
   const { regno } = details;
 
   return (
-    <div className={classes.container}>
-      <div className={classes.detailsContainer}>
+    <React.Fragment>
+      <Divider />
+      <DetailsContainer>
         {callProductDetails(details)}
         {callIngredients(details)}
-      </div>
-      <div className={classes.registration}>
-        <p>Registration number: {regno}</p>
-      </div>
-    </div>
+      </DetailsContainer>
+      <Registration>Registration number: {regno}</Registration>
+    </React.Fragment>
   );
 };
 

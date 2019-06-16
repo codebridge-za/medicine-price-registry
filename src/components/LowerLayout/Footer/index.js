@@ -1,43 +1,49 @@
 import React from 'react';
 import openUpLogo from '../../../images/OpenUp-logo.png';
 
-import classes from './style.module.css';
+import {
+  Wrapper,
+  LogoContainer,
+  Logo,
+  CollectionDateAndContact,
+  Text,
+  Link,
+  Sponsor,
+} from './styled';
 
-const Logo = (
-  <div className={classes.logoContainer}>
-    <img className={classes.logo} src={openUpLogo} alt="Logo of OpenUp" />
-  </div>
+const callLogo = (
+  <LogoContainer>
+    <Logo src={openUpLogo} alt="Logo of OpenUp" />
+  </LogoContainer>
 );
 
-const contacts = (
-  <div className={classes.collectionDateAndContact}>
-    <p className={classes.paragraph}>These prices were collected on 2018-10-15</p>
-    <p className={classes.paragraph}>Contact <a className={classes.link} href="mailto:adi@openup.org.za">adi@openup.org.za</a> for more details</p>
-  </div>
+const callContacts = (
+  <CollectionDateAndContact>
+    <Text>These prices were collected on 2018-10-15</Text>
+    <Text>Contact <Link href="mailto:adi@openup.org.za">adi@openup.org.za</Link> for more details</Text>
+  </CollectionDateAndContact>
 );
 
-const disclaimers = (
-  <div className={classes.sponsor}>
-    <p>
-      <a className={classes.link} href="https://mpr.netlify.com/" target="_blank" rel="noopener noreferrer">MPR</a> is powered by%
-      <a className={classes.link} href="https://openup.org.za/" target="_blank" rel="noopener noreferrer"> OpenUp</a>.
-    </p>
-    <p className={classes.paragraph}>
-      <a className={classes.link} href="https://github.com/codebridge-za/medicine-price-registry" target="_blank" rel="noopener noreferrer">Pull requests are welcome
-      </a>
-    </p>
-    <p className={classes.paragraph}>Thanks to <a className={classes.link} href="http://onlinepharmacycheck.com/medico/" target="_blank" rel="noopener noreferrer">MedICO</a> for the cool icons.</p>
-  </div>
+const callDisclaimers = (
+  <Sponsor>
+    <Text>
+      <Link href="https://mpr.netlify.com/" target="_blank" rel="noopener noreferrer">MPR</Link> is powered by
+      <Link href="https://openup.org.za/" target="_blank" rel="noopener noreferrer"> OpenUp</Link>.
+    </Text>
+    <Text>
+      <Link href="https://github.com/codebridge-za/medicine-price-registry" target="_blank" rel="noopener noreferrer">Pull requests are welcome
+      </Link>
+    </Text>
+    <Text>Thanks to <Link href="http://onlinepharmacycheck.com/medico/" target="_blank" rel="noopener noreferrer">MedICO</Link> for the cool icons.</Text>
+  </Sponsor>
 );
 
 const Footer = () => (
-  <div>
-    {Logo}
-    <div>
-      {contacts}
-      {disclaimers}
-    </div>
-  </div>
+  <Wrapper>
+    {callLogo}
+    {callContacts}
+    {callDisclaimers}
+  </Wrapper>
 );
 
 export default Footer;

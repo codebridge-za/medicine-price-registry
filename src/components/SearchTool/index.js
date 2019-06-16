@@ -5,7 +5,7 @@ import Markup from './Markup';
 
 class SearchTool extends Component {
   state = {
-    content: null,
+    content: '',
     results: [],
   }
 
@@ -27,21 +27,16 @@ class SearchTool extends Component {
       });
   }
 
-  submitForm = (event) => {
-    event.preventDefault();
-    this.setState({ content: null });
-  }
-
   changeHandler = (event) => {
     const { fetchBasicSearch } = this;
     const { value: content } = event.target;
 
     this.setState({ content });
-    
+
     if (!content || content.length < 4) {
       return null;
     }
-    
+
     return fetchBasicSearch(content);
   }
 
@@ -52,7 +47,6 @@ class SearchTool extends Component {
       content: state.content,
       results: state.results,
       changeHandler: this.changeHandler,
-      submitForm: this.submitForm,
       fetchGenerics: this.fetchGenerics,
     };
 
