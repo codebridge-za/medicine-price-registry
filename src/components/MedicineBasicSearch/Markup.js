@@ -1,7 +1,7 @@
 import React from 'react';
 import t from 'prop-types';
 
-import { CardContent, CardActions, Collapse } from '@material-ui/core';
+import { CardActions, Collapse } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import DetailsPanel from '../DetailsPanel';
@@ -24,6 +24,7 @@ import {
   ButtonStyled,
   DescriptionContainerRight,
   ImageAndNameLeft,
+  CardContentCollapse,
 } from './styled';
 
 const callIcon = (dosageForm) => {
@@ -106,11 +107,11 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => 
         </Container>
       </CardContentStyled>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContentCollapse>
           <div>
             {nappiCode === details.nappi_code && <DetailsPanel details={details} />}
           </div>
-        </CardContent>
+        </CardContentCollapse>
       </Collapse>
     </CardStyled>
   );

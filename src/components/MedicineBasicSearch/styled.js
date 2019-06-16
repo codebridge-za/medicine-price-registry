@@ -43,7 +43,7 @@ const MedIcon = styled.img`
 
 const CardStyled = styled(Card)`
   && {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -93,6 +93,12 @@ const IconButtonStyled = styled(removeProps({ component: IconButton, blacklist: 
   }
 `;
 
+const CardContentCollapse = styled(CardContent)`
+  && {
+    padding: 0 20px;
+  }
+`;
+
 export {
   Container,
   ImageContainerLeft,
@@ -107,6 +113,7 @@ export {
   ButtonStyled,
   DescriptionContainerRight,
   ImageAndNameLeft,
+  CardContentCollapse,
 };
 
 export default {
@@ -123,4 +130,5 @@ export default {
   ButtonStyled,
   DescriptionContainerRight,
   ImageAndNameLeft,
+  CardContentCollapse,
 };

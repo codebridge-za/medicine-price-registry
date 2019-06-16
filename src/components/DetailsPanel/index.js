@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { Divider } from '@material-ui/core';
+
 import {
-  Container,
   DetailsContainer,
   Registration,
   Details,
@@ -9,13 +10,14 @@ import {
   ListsContainer,
   List,
   DetailKey,
+  Value,
   IngredientList,
 } from './styled';
 
 const callListOfIngredients = ({ name, strength, unit }) => (
   <IngredientList key={name}>
     <DetailKey>{name}</DetailKey>
-    <div>{strength + unit}</div>
+    <Value>{strength + unit}</Value>
   </IngredientList>
 );
 
@@ -78,7 +80,7 @@ const callListOfProducts = (details) => {
   const createListItem = ({ key, value }) => (
     <List key={key}>
       <DetailKey>{key}:</DetailKey>
-      <div>{value}</div>
+      <Value>{value}</Value>
     </List>
   );
 
@@ -103,15 +105,14 @@ const DetailsPanel = ({ details }) => {
   const { regno } = details;
 
   return (
-    <Container>
+    <React.Fragment>
+      <Divider />
       <DetailsContainer>
         {callProductDetails(details)}
         {callIngredients(details)}
       </DetailsContainer>
-      <Registration>
-        <p>Registration number: {regno}</p>
-      </Registration>
-    </Container>
+      <Registration>Registration number: {regno}</Registration>
+    </React.Fragment>
   );
 };
 

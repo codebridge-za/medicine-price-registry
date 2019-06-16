@@ -1,39 +1,21 @@
 import styled from 'styled-components';
 
-import {
-  Card,
-  Typography,
-  IconButton,
-  Button,
-} from '@material-ui/core';
-
-const Container = styled.div`
-  margin-bottom: 10px;
-`;
+import { Typography } from '@material-ui/core';
 
 const DetailsContainer = styled.div`
   display: flex;
-  ${'' /* border: 1px solid #d6d6d6; */}
-  ${'' /* border-top: none; */}
-  ${'' /* margin-top: -10px; */}
-`;
-
-const Registration = styled.div`
-  color: #999;
-  font-size: 14px;
-  padding: 15px;
-  ${'' /* border: 1px solid #d6d6d6; */}
-  ${'' /* border-top: none; */}
 `;
 
 const Details = styled.div`
   width: 50%;
-  padding: 15px;
+  padding: 20px;
 `;
 
-const Title = styled.div`
-  padding-bottom: 20px;
-  font-size: 20px;
+const Title = styled(Typography)`
+  && {
+    padding-bottom: 20px;
+    font-size: 20px;
+  }
 `;
 
 const ListsContainer = styled.ul`
@@ -47,10 +29,17 @@ const List = styled.li`
   justify-content: space-between;
 `;
 
-const DetailKey = styled.div`
-  font-weight: bold;
-  line-height: 1.4px;
-  font-size: 14px;
+const DetailKey = styled(Typography)`
+  && {
+    line-height: 1.5px;
+    font-size: 14px;
+  }
+`;
+
+const Value = styled(Typography)`
+  && {
+    font-size: 14px;
+  }
 `;
 
 const IngredientList = styled.li`
@@ -58,8 +47,15 @@ const IngredientList = styled.li`
   justify-content: space-between;
 `;
 
+const Registration = styled(Typography)`
+  && {
+    color: #999;
+    font-size: 14px;
+    padding: 0 20px;
+  }
+`;
+
 export {
-  Container,
   DetailsContainer,
   Registration,
   Details,
@@ -67,11 +63,11 @@ export {
   ListsContainer,
   List,
   DetailKey,
+  Value,
   IngredientList,
 };
 
 export default {
-  Container,
   DetailsContainer,
   Registration,
   Details,
@@ -79,5 +75,6 @@ export default {
   ListsContainer,
   List,
   DetailKey,
+  Value,
   IngredientList,
 };
