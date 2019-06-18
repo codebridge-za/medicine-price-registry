@@ -85,10 +85,10 @@ const ButtonStyled = styled(Button)`
   text-transform: none;
 `;
 
-const IconButtonStyled = styled(removeProps({ component: IconButton, blacklist: 'expanded' }))`
+const IconButtonStyled = styled(removeProps({ component: IconButton, blacklist: ['expanded', 'loading'] }))`
   && {
-    transform: ${({ expanded }) => (expanded ? 'rotate(180deg)' : 'rotate(0deg)')};
-    color: ${({ expanded }) => (expanded ? 'red' : 'blue')};
+    transform: ${({ expanded, loading }) => (expanded && !loading ? 'rotate(180deg)' : 'rotate(0deg)')};
+    color: ${({ expanded, loading }) => (expanded && !loading ? 'red' : 'blue')};
     transition: transform .2s ease-in-out;
   }
 `;

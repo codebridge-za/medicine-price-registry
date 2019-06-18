@@ -5,6 +5,7 @@ import { CardActions, Collapse } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import DetailsPanel from '../DetailsPanel';
+import Spinner from '../Spinner';
 
 import tablet from '../../../static/images/pill_24.png';
 import capsule from '../../../static/images/capsule_24.png';
@@ -71,20 +72,48 @@ const callPriceAndGenerics = (price, nappiCode, fetchGenerics) => (
   </FarRightContainer>
 );
 
-const callCollapsibleIcon = (expanded, fetchDetails, nappiCode) => (
+const callSpinner = (loading, nappiCode, details) => {
+  if (loading && nappiCode === details.nappi_code) {
+    return <Spinner size={30} thickness={2.5} />;
+  }
+  return null;
+};
+
+const callCollapsibleIcon = (expanded, fetchDetails, nappiCode, loading, details) => (
   <CardActionsStyled>
+    {callSpinner(loading, nappiCode, details)}
     <IconButtonStyled
-      {...{ expanded }}
       onClick={() => fetchDetails(nappiCode)}
-      aria-expanded={expanded}
-      aria-label="Show more"
+      expanded={nappiCode === details.nappi_code && expanded}
+      loading={nappiCode === details.nappi_code && loading}
     >
       <ExpandMoreIcon />
     </IconButtonStyled>
   </CardActionsStyled>
 );
 
-const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => (props) => {
+const callCollapsibleDetails = (expanded, nappiCode, details, loading) => {
+  if (loading) {
+    return null;
+  }
+  return (
+    <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <CardContentCollapse>
+        <div>
+          {nappiCode === details.nappi_code && !loading && <DetailsPanel details={details} />}
+        </div>
+      </CardContentCollapse>
+    </Collapse>
+  );
+};
+
+const createMedicinePanel = (
+  fetchGenerics,
+  details,
+  fetchDetails,
+  expanded,
+  loading,
+) => (props) => {
   const {
     dosage_form: dosageForm,
     name,
@@ -102,17 +131,11 @@ const createMedicinePanel = (fetchGenerics, details, fetchDetails, expanded) => 
           </ImageAndNameLeft>
           <DescriptionContainerRight>
             {callPriceAndGenerics(price, nappiCode, fetchGenerics)}
-            {callCollapsibleIcon(expanded, fetchDetails, nappiCode)}
+            {callCollapsibleIcon(expanded, fetchDetails, nappiCode, loading, details)}
           </DescriptionContainerRight>
         </Container>
       </CardContentStyled>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContentCollapse>
-          <div>
-            {nappiCode === details.nappi_code && <DetailsPanel details={details} />}
-          </div>
-        </CardContentCollapse>
-      </Collapse>
+      {callCollapsibleDetails(expanded, nappiCode, details, loading)}
     </CardStyled>
   );
 };
@@ -123,7 +146,8 @@ const Markup = ({
   fetchGenerics,
   fetchDetails,
   expanded,
-}) => results.map(createMedicinePanel(fetchGenerics, details, fetchDetails, expanded));
+  loading,
+}) => results.map(createMedicinePanel(fetchGenerics, details, fetchDetails, expanded, loading));
 
 export default Markup;
 

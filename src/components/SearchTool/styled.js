@@ -16,7 +16,6 @@ const Text = styled(Typography)`
 `;
 
 const SearchWrapper = styled.div`
-  position: relative;
   border-radius: 10px;
   background-color: #f7f7f7;
   margin-left: 0;
@@ -46,11 +45,25 @@ const InputBaseStyled = styled(InputBase)`
   }
 `;
 
-export { Wrapper, Text, SearchWrapper, InputBaseStyled };
+const SpinnerContainer = styled.div`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export {
+  Wrapper,
+  Text,
+  SearchWrapper,
+  InputBaseStyled,
+  SpinnerContainer,
+};
 
 export default {
   Wrapper,
   Text,
   SearchWrapper,
   InputBaseStyled,
+  SpinnerContainer,
 };
